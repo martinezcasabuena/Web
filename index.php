@@ -1,9 +1,8 @@
-<?php 
-	require_once("view/inc/header.html"); 
+<?php
 
-	
+	require_once("view/inc/header.html");
 	include 'utils/utils.inc.php';
-	
+
 	session_start();
 
 	if (!isset($_GET['module'])) {
@@ -11,9 +10,10 @@
 	} else	if ( (isset($_GET['module'])) && (!isset($_GET['view'])) ){
 		require_once("modules/".$_GET['module']."/controller/controller_".$_GET['module'].".class.php");
 	}
-	
+
 	if ( (isset($_GET['module'])) && (isset($_GET['view'])) ) {
 		require_once("modules/".$_GET['module']."/view/".$_GET['view'].".php");
-	} 
-		
+	}
+
 	require_once("view/inc/footer.html");
+	require_once("view/inc/menu.php");
