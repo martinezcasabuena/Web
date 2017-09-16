@@ -16,13 +16,13 @@ if (isset($_POST['submit_user'])) {
         $arrArgument = array(
             'name' => ucfirst($result['datos']['name']),
             'last_name' => ucfirst($result['datos']['last_name']),
-            'title_date' => $result['datos']['title_date'],
-            'address' => $result['datos']['address'],
             'nif' => $result['datos']['nif'],
-            'pass' => $result['datos']['pass'],
+            'address' => $result['datos']['address'],
             'email' => $result['datos']['email'],
-            'en_lvl' => strtoupper($result['datos']['en_lvl']),
-            'interests' => $result['datos']['interests'],
+            'bill_date' => $result['datos']['bill_date'],
+            'service_date' => $result['datos']['service_date'],
+            'paid_form' => strtoupper($result['datos']['paid_form']),
+            'service' => $result['datos']['service'],
         );
 
         $mensaje = "User has been successfully registered";
