@@ -1,4 +1,4 @@
-<section id="contact-page">
+<section id="users-page">
     <div class="container">
         <div class="center">
             <h2>Nueva Factura</h2>
@@ -111,7 +111,7 @@
                             <option value="cheque">Cheque</option>
                         </select>
                         <div id="e_paid_form"><?php
-                            if (isset($error['en_lvl'])) {
+                            if (isset($error['paid_form'])) {
                                 print ("<BR><span style='color: #ff0000'>" . "* " . $error['paid_form'] . "</span><br/>");
                             }
                             ?></div>
@@ -123,10 +123,10 @@
                     <div class="form-group">
                         <label>Tipo de servicio  *</label><br>
 
-                        Computing  <input type="checkbox" name="service[]" value="Computing">
-                        History  <input type="checkbox" name="service[]" value="History">
-                        Magic  <input type="checkbox" name="service[]" value="Magic">
-                        Music   <input type="checkbox" name="service[]" value="Music">
+                        <br>Computing  <input type="checkbox" name="service[]" value="Computing"></br>
+                        <br>History  <input type="checkbox" name="service[]" value="History"></br>
+                        <br>Magic  <input type="checkbox" name="service[]" value="Magic"></br>
+                        <br>Music   <input type="checkbox" name="service[]" value="Music"></br>
                         <div id="e_service"><?php
                             if (isset($error['service'])) {
                                 print ("<BR><span style='color: #ff0000'>" . "* " . $error['service'] . "</span><br/>");
@@ -135,7 +135,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="submit_user" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
+                        <button type="submit" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
                 </div>
             </form>

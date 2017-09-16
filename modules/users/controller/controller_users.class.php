@@ -9,7 +9,7 @@ echo "<br>";
 echo "<br>";
 include 'modules/users/utils/functions_user.inc.php';
 
-if (isset($_POST['submit_user'])) {
+if (isset($_POST['submit_bill'])) {
     $result = validate_user();
 
     if ($result['resultado']) {

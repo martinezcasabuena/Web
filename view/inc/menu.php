@@ -10,7 +10,7 @@
 						<li><a href="index.php?module=generic">Generic</a></li>
 						<li><a href="index.php?module=elements">Elements</a></li>
 						<li><a href="index.php?module=users">Sign Up</a></li>
-						<li><a href="#">Log In</a></li>
+						<li><a href="index.php?module=usersmod">Log In</a></li>
 					</ul>
 				</div>
 			</li>

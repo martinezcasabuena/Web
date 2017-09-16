@@ -1,7 +1,7 @@
 <!-- Header -->
 <html>
 <header id="header" class="alt">
-	
+
 	<!-- CSS -->
 	<link href="view/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="view/css/ie8.css" rel="stylesheet" />
@@ -16,7 +16,12 @@
 	<script src="view/js/util.js"></script>
 	<!--[if lte IE 8]><script src="view/js/ie/respond.min.js"></script><![endif]-->
 	<script src="view/js/main.js"></script>
-
+	<script>
+			 $(function() {
+				 $( "#bill_date" ).datepicker();
+				 $( "#service_date" ).datepicker();
+			 });
+	</script>
 </header>
 
 <!-- Banner -->

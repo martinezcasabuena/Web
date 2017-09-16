@@ -3697,6 +3697,24 @@
 		background-attachment: scroll;
 	}
 
+	/* Users */
+
+#users-page{
+  padding-top: 0;
+	padding-left:0;
+	display: flex;
+	justify-content: center;
+	align-items: right;
+}
+
+
+.form-group .form-control {
+	padding: 7px 13px;
+	text-align: left;
+	border-color:#FF5256;
+	box-shadow: none;
+}
+
 /* Footer */
 
 	#footer {
