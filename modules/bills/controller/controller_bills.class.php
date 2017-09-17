@@ -11,7 +11,6 @@ include 'modules/bills/utils/functions_bills.inc.php';
 
 if (isset($_POST['submit_bill'])) {
     $result = validate_bill();
-
     if ($result['resultado']) {
         $arrArgument = array(
             'name' => ucfirst($result['datos']['name']),

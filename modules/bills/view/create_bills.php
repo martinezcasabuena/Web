@@ -1,3 +1,4 @@
+<script type="text/javascript" src="modules/bills/view/js/bills.js"></script>
 <section id="bills-page">
     <div class="container">
         <div class="center">
@@ -135,7 +136,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
+                        <button type="submit" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
                 </div>
             </form>
