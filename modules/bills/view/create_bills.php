@@ -1,4 +1,4 @@
-<section id="users-page">
+<section id="bills-page">
     <div class="container">
         <div class="center">
             <h2>Nueva Factura</h2>
@@ -6,7 +6,7 @@
         </div>
         <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
-            <form id="form" method="post" action="index.php?module=users">
+            <form id="form" method="post" action="index.php?module=bills">
                 <div class="col-sm-5 col-sm-offset-1">
                     <div class="form-group">
                         <label>Nombre *</label>

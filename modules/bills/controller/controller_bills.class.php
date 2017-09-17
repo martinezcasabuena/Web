@@ -7,10 +7,10 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 echo "<br>";
-include 'modules/users/utils/functions_user.inc.php';
+include 'modules/bills/utils/functions_bills.inc.php';
 
 if (isset($_POST['submit_bill'])) {
-    $result = validate_user();
+    $result = validate_bill();
 
     if ($result['resultado']) {
         $arrArgument = array(
@@ -25,15 +25,15 @@ if (isset($_POST['submit_bill'])) {
             'service' => $result['datos']['service'],
         );
 
-        $mensaje = "User has been successfully registered";
+        $mensaje = "Bill has been successfully registered";
 
-        $_SESSION['user'] = $arrArgument;
+        $_SESSION['bill'] = $arrArgument;
         $_SESSION['msje'] = $mensaje;
 
-        $callback = "index.php?module=users&view=results_users";
+        $callback = "index.php?module=bills&view=results_bills";
         redirect($callback);
     } else {
         $error = $result['error'];
     }
 }
-include 'modules/users/view/create_users.php';
+include 'modules/bills/view/create_bills.php';

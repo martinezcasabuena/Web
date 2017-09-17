@@ -1,19 +1,19 @@
 <section id="contact-page">
     <div class="container">
-        <div class="center">        
+        <div class="center">
             <h2>ADD PRODUCT</h2>
             <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div> 
-        <div class="row contact-wrap"> 
+        </div>
+        <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
             <?php
-            $user = $_SESSION['user'];
+            $bill = $_SESSION['bill'];
             $msage = $_SESSION['msje'];
 
-            foreach ($user as $indice => $valor) {
+            foreach ($bill as $indice => $valor) {
                 if ($indice == 'interests') {
                     echo "<br><b>Interests:</b><br>";
-                    $interests = $user['interests'];
+                    $interests = $bill['interests'];
                     foreach ($interests as $indice => $valor) {
                         echo "<b>---> $indice</b>: $valor<br>";
                     }

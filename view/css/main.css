@@ -3697,9 +3697,9 @@
 		background-attachment: scroll;
 	}
 
-	/* Users */
+	/* Bills */
 
-#users-page{
+#bills-pages{
   padding-top: 0;
 	padding-left:0;
 	display: flex;

@@ -1,5 +1,5 @@
 <?php
-function validate_user() {
+function validate_bill() {
     $error = array();
     $valido = true;
     $filtro = array(
