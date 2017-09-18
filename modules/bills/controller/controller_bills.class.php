@@ -9,7 +9,7 @@ echo "<br>";
 echo "<br>";
 include 'modules/bills/utils/functions_bills.inc.php';
 
-if (isset($_POST['submit_bill'])) {
+if ($_POST) {
     $result = validate_bill();
     if ($result['resultado']) {
         $arrArgument = array(

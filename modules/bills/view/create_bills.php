@@ -7,11 +7,11 @@
         </div>
         <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
-            <form id="form" method="post" action="index.php?module=bills">
+            <form id="form_bill" method="post">
                 <div class="col-sm-5 col-sm-offset-1">
                     <div class="form-group">
                         <label>Nombre *</label>
-                        <input type="text" name="name" placeholder="Nombre  " class="form-control" required="required" value="<?php
+                        <input id="name" type="text" name="name" placeholder="Nombre  " class="form-control" required="required" value="<?php
                         if (!isset($error['name'])) {
                             echo $_POST ? $_POST['name'] : "";
                         }
@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label>Apellidos *</label>
-                        <input type="text" name="last_name" placeholder="Apellidos" class="form-control" required="required" value="<?php
+                        <input id="last_name" type="text" name="last_name" placeholder="Apellidos" class="form-control" required="required" value="<?php
                         if (!isset($error['last_name'])) {
                             echo $_POST ? $_POST['last_name'] : "";
                         }
@@ -63,7 +63,7 @@
                     </div>
                       <div class="form-group">
                         <label>E-mail *</label>
-                        <input type="email" name="email" placeholder="e-mail" class="form-control" required="required" value="<?php
+                        <input id="email" type="email" name="email" placeholder="e-mail" class="form-control" required="required" value="<?php
                         if (!isset($error['email'])) {
                             echo $_POST ? $_POST['email'] : "";
                         }
@@ -136,7 +136,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
+                        <button type="button" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
                 </div>
             </form>

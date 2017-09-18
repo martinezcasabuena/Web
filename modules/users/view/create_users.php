@@ -1,11 +1,11 @@
 <script type="text/javascript" src="modules/users/view/js/users.js" ></script>
 <section id="contact-page">
     <div class="container">
-        <div class="center">        
+        <div class="center">
             <h2>ADD USER    </h2>
             <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div> 
-        <div class="row contact-wrap"> 
+        </div>
+        <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
             <form id="form_user" method="post">
                 <div class="col-sm-5 col-sm-offset-1">
@@ -29,7 +29,7 @@
                             echo $_POST ? $_POST['last_name'] : "";
                         }
                         ?>">
-                        
+
                         <div id="e_last_name"><?php
                             if (isset($error['last_name'])) {
                                 print ("<BR><span style='color: #ff0000'>" . "* " . $error['last_name'] . "</span><br/>");
@@ -141,7 +141,7 @@
                             ?></div>
                     </div>
                     <div class="form-group">
-                        <label>Confirm Email *</label> 
+                        <label>Confirm Email *</label>
                         <input type="email" id="conf_email" name="conf_email" placeholder="confirm e-mail" class="form-control" required="required" value="<?php
                         if (!isset($error['email'])) {
                             echo $_POST ? $_POST['email'] : "";
@@ -171,7 +171,7 @@
                         <button type="button" id="submit_user" name="submit_user" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
                 </div>
-            </form> 
+            </form>
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#contact-page-->
