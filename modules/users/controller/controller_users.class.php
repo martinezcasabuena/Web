@@ -1,8 +1,8 @@
 <?php
-include 'modules/bills/utils/functions_bills.inc.php';
-include 'utils/upload.php';
-
-//include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
+session_start();
+//include  with absolute route
+include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/3_fileupload_dropzone/modules/users/utils/functions_user.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/3_fileupload_dropzone/utils/upload.php");
 
 //////////////////////////////////////////////////////////////// upload
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
@@ -12,14 +12,14 @@ if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
 }
 
 //////////////////////////////////////////////////////////////// alta_users_json
-if ((isset($_POST['alta_bills_json']))) {
+if ((isset($_POST['alta_users_json']))) {
     alta_users();
 }
 
 function alta_users() {
     $jsondata = array();
-    $billsJSON = json_decode($_POST["alta_bills_json"], true);
-    $result = validate_bill($billsJSON);
+    $usersJSON = json_decode($_POST["alta_users_json"], true);
+    $result = validate_user($usersJSON);
 
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/default-avatar.png');
@@ -30,30 +30,31 @@ function alta_users() {
         $arrArgument = array(
             'name' => ucfirst($result['datos']['name']),
             'last_name' => ucfirst($result['datos']['last_name']),
-            'nif' => $result['datos']['nif'],
+            'birth_date' => $result['datos']['birth_date'],
+            'title_date' => $result['datos']['title_date'],
             'address' => $result['datos']['address'],
+            'user' => $result['datos']['user'],
+            'pass' => $result['datos']['pass'],
             'email' => $result['datos']['email'],
-            'bill_date' => $result['datos']['bill_date'],
-            'service_date' => $result['datos']['service_date'],
-            'paid_form' => strtoupper($result['datos']['paid_form']),
-            'service' => $result['datos']['service'],
+            'en_lvl' => strtoupper($result['datos']['en_lvl']),
+            'interests' => $result['datos']['interests'],
+            'avatar' => $result_avatar['datos']
         );
 
-        $mensaje = "Bill has been successfully registered";
+        $mensaje = "User has been successfully registered";
 
-        //Redirigir a otra página
-        $_SESSION['bill'] = $arrArgument;
+        //redirigir a otra p�gina con los datos de $arrArgument y $mensaje
+        $_SESSION['user'] = $arrArgument;
         $_SESSION['msje'] = $mensaje;
-
-        $callback = "index.php?module=bills&view=results_bills";
+        $callback = "index.php?module=users&view=results_users";
 
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
         echo json_encode($jsondata);
         exit;
     } else {
-        $error = $result['error'];
-        $error_avatar = $result_avatar['error'];
+        //$error = $result['error'];
+        //$error_avatar = $result_avatar['error'];
         $jsondata["success"] = false;
         $jsondata["error"] = $result['error'];
         $jsondata["error_avatar"] = $result_avatar['error'];
@@ -68,6 +69,8 @@ function alta_users() {
         //exit;
     }
 }
+
+//////////////////////////////////////////////////////////////// delete
 if (isset($_GET["delete"]) && $_GET["delete"] == true) {
     $_SESSION['result_avatar'] = array();
     $result = remove_files();
@@ -81,9 +84,9 @@ if (isset($_GET["delete"]) && $_GET["delete"] == true) {
 //////////////////////////////////////////////////////////////// load
 if (isset($_GET["load"]) && $_GET["load"] == true) {
     $jsondata = array();
-    if (isset($_SESSION['bill'])) {
+    if (isset($_SESSION['user'])) {
         //echo debug($_SESSION['user']);
-        $jsondata["bill"] = $_SESSION['bill'];
+        $jsondata["user"] = $_SESSION['user'];
     }
     if (isset($_SESSION['msje'])) {
         //echo $_SESSION['msje'];
@@ -95,7 +98,7 @@ if (isset($_GET["load"]) && $_GET["load"] == true) {
 }
 
 function close_session() {
-    unset($_SESSION['bill']);
+    unset($_SESSION['user']);
     unset($_SESSION['msje']);
     $_SESSION = array(); // Destruye todas las variables de la sesión
     session_destroy(); // Destruye la sesión
@@ -104,14 +107,13 @@ function close_session() {
 /////////////////////////////////////////////////// load_data
 if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     $jsondata = array();
-    if (isset($_SESSION['bill'])) {
-        $jsondata["bill"] = $_SESSION['bill'];
+    if (isset($_SESSION['user'])) {
+        $jsondata["user"] = $_SESSION['user'];
         echo json_encode($jsondata);
         exit;
     } else {
-        $jsondata["bill"] = "";
+        $jsondata["user"] = "";
         echo json_encode($jsondata);
         exit;
     }
 }
-include 'modules/bills/view/create_bills.php';

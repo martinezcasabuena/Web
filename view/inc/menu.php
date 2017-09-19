@@ -6,11 +6,40 @@
 				<a href="#menu" class="menuToggle"><span>Menu</span></a>
 				<div id="menu">
 					<ul>
-						<li><a href="index.php?module=main">Home</a></li>
-						<li><a href="index.php?module=generic">Generic</a></li>
-						<li><a href="index.php?module=elements">Elements</a></li>
-						<li><a href="index.php?module=bills">Sign Up</a></li>
-						<li><a href="index.php?module=users">Log In</a></li>
+						<li class="
+						<?php if($_GET['module'] === 'main')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="index.php?module=main">Home</a></li>
+
+						<li class="
+						<?php if($_GET['module'] === 'generic')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="index.php?module=generic">Generic</a></li>
+
+						<li class="
+						<?php if($_GET['module'] === 'elements')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="index.php?module=elements">Elements</a></li>
+
+						<li class="
+						<?php if($_GET['module'] === 'bills')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="index.php?module=bills&view=create_bills">Sign up</a></li>
+
+						<li class="
+						<?php if($_GET['module'] === 'users')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="index.php?module=users&view=create_users">Users</a></li>
 					</ul>
 				</div>
 			</li>
