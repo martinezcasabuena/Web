@@ -134,6 +134,18 @@
                             }
                             ?></div>
                     </div>
+                    <br />
+                    <div class="form-group" id="progress">
+                        <div id="bar"></div>
+                        <div id="percent">0%</div >
+                    </div>
+
+                    <div class="msg"></div>
+                    <br/>
+                    <div id="dropzone" class="dropzone"></div><br/>
+                    <br/>
+                    <br/>
+                    <br/>
 
                     <div class="form-group">
                         <button type="button" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
