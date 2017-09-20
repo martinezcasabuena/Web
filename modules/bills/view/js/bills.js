@@ -1,5 +1,5 @@
 //Crear un plugin
-alert("PRUEBA");
+//alert("PRUEBA");
 jQuery.fn.fill_or_clean = function () {
     this.each(function () {
         if ($("#name").val() == "") {
@@ -230,71 +230,6 @@ $(document).ready(function () {
     var string_reg = /^[A-Za-z]{2,30}$/;
     var nif_reg = /^(\d{8})([A-Z])$/;
 
-    $("#submit_bill").click(function () {
-        $(".error").remove();
-        console.log("SUBMIT");
-        if ($("#name").val() == "" || $("#name").val() == "Introduce name") {
-            $("#name").focus().after("<span class='error'>Introduce name</span>");
-            return false;
-        } else if (!string_reg.test($("#name").val())) {
-            $("#name").focus().after("<span class='error'>Name must be 2 to 30 letters</span>");
-            return false;
-        }
-
-        if ($("#last_name").val() == "" || $("#last_name").val() == "Introduce last name") {
-            $("#last_name").focus().after("<span class='error'>Introduce last name</span>");
-            return false;
-        } else if (!string_reg.test($("#last_name").val())) {
-            $("#last_name").focus().after("<span class='error'>Last name must be 2 to 30 letters</span>");
-            return false;
-        }
-
-        if ($("#bill_date").val() == "" || $("#bill_date").val() == "Introduce date of bill") {
-            $("#bill_date").focus().after("<span class='error'>Introduce date of bill</span>");
-            return false;
-        } else if (!date_reg.test($("#bill_date").val())) {
-            $("#bill_date").focus().after("<span class='error'>error format date (mm/dd/yyyy)</span>");
-            return false;
-        }
-
-        if ($("#service_date").val() == "" || $("#service_date").val() == "Introduce date of service") {
-            $("#service_date").focus().after("<span class='error'>Introduce date of service</span>");
-            return false;
-        } else if (!date_reg.test($("#service_date").val())) {
-            $("#service_date").focus().after("<span class='error'>error format date (mm/dd/yyyy)</span>");
-            return false;
-        }
-
-        if ($("#address").val() == "" || $("#address").val() == "Introduce address") {
-            $("#address").focus().after("<span class='error'>Introduce address</span>");
-            return false;
-        } else if (!address_reg.test($("#address").val())) {
-            $("#address").focus().after("<span class='error'>Address don't have  symbols.</span>");
-            return false;
-        }
-
-        if ($("#nif").val() == "" || $("#nif").val() == "Introduce nif") {
-            $("#nif").focus().after("<span class='error'>Introduce nif</span>");
-            return false;
-        } else if (!nif_reg.test($("#nif").val())) {
-            $("#nif").focus().after("<span class='error'>Introduce a valid nif.</span>");
-            return false;
-        }
-
-        if ($("#email").val() == "" || $("#email").val() == "Introduce email") {
-            $("#email").focus().after("<span class='error'>Introduce email</span>");
-            return false;
-        } else if (!email_reg.test($("#email").val())) {
-            $("#email").focus().after("<span class='error'>Error format email (example@example.com).</span>");
-            return false;
-        }
-
-        $("#form_bill").submit();
-        $("#form_bill").attr("action", "index.php?module=bills");
-
-    });
-
-    //realizamos funciones para que sea más práctico nuestro formulario
     $("#name, #last_name").keyup(function () {
         if ($(this).val() != "" && string_reg.test($(this).val())) {
             $(".error").fadeOut();
@@ -330,3 +265,173 @@ $(document).ready(function () {
         }
     });
 });
+
+function validate_bill() {
+    var result = true;
+
+    var name = document.getElementById('name').value;
+    var last_name = document.getElementById('last_name').value;
+    var bill_date = document.getElementById('bill_date').value;
+    var service_date = document.getElementById('service_date').value;
+    var address = document.getElementById('address').value;
+    var paid_form = document.getElementById('paid_form').value;
+    var nif = document.getElementById('nif').value;
+    var email = document.getElementById('email').value;
+    var service = [];
+    var inputElements = document.getElementsByClassName('messageCheckbox');
+    var j = 0;
+    for (var i = 0; i < inputElements.length; i++) {
+        if (inputElements[i].checked) {
+            service[j] = inputElements[i].value;
+            j++;
+        }
+    }
+
+    //Utilizamos las expresiones regulares para la validación de errores JS
+    var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+    var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
+    var address_reg = /^[a-z0-9- -.]+$/i;
+    var string_reg = /^[A-Za-z]{2,30}$/;
+    var nif_reg = /^(\d{8})([A-Z])$/;
+
+    $(".error").remove();
+    console.log("SUBMIT");
+
+    if ($("#name").val() == "" || $("#name").val() == "Introduce name") {
+        $("#name").focus().after("<span class='error'>Introduce name</span>");
+        result = false;
+        return false;
+    } else if (!string_reg.test($("#name").val())) {
+        $("#name").focus().after("<span class='error'>Name must be 2 to 30 letters</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#last_name").val() == "" || $("#last_name").val() == "Introduce last name") {
+        $("#last_name").focus().after("<span class='error'>Introduce last name</span>");
+        result = false;
+        return false;
+    } else if (!string_reg.test($("#last_name").val())) {
+        $("#last_name").focus().after("<span class='error'>Last name must be 2 to 30 letters</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#bill_date").val() == "" || $("#bill_date").val() == "Introduce date of bill") {
+        $("#bill_date").focus().after("<span class='error'>Introduce date of bill</span>");
+        result = false;
+        return false;
+    } else if (!date_reg.test($("#bill_date").val())) {
+        $("#bill_date").focus().after("<span class='error'>error format date (mm/dd/yyyy)</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#service_date").val() == "" || $("#service_date").val() == "Introduce date of service") {
+        $("#service_date").focus().after("<span class='error'>Introduce date of service</span>");
+        result = false;
+        return false;
+    } else if (!date_reg.test($("#service_date").val())) {
+        $("#service_date").focus().after("<span class='error'>error format date (mm/dd/yyyy)</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#address").val() == "" || $("#address").val() == "Introduce address") {
+        $("#address").focus().after("<span class='error'>Introduce address</span>");
+        result = false;
+        return false;
+    } else if (!address_reg.test($("#address").val())) {
+        $("#address").focus().after("<span class='error'>Address don't have  symbols.</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#nif").val() == "" || $("#nif").val() == "Introduce nif") {
+        $("#nif").focus().after("<span class='error'>Introduce nif</span>");
+        result = false;
+        return false;
+    } else if (!nif_reg.test($("#nif").val())) {
+        $("#nif").focus().after("<span class='error'>Introduce a valid nif.</span>");
+        result = false;
+        return false;
+    }
+
+    if ($("#email").val() == "" || $("#email").val() == "Introduce email") {
+        $("#email").focus().after("<span class='error'>Introduce email</span>");
+        result = false;
+        return false;
+    } else if (!email_reg.test($("#email").val())) {
+        $("#email").focus().after("<span class='error'>Error format email (example@example.com).</span>");
+        result = false;
+        return false;
+    }
+
+    //Si ha ido todo bien, se envian los datos al servidor
+    if (result) {
+        var data = {"name": name, "last_name": last_name, "bill_date": bill_date, "service_date": service_date, "address": address, "paid_form": paid_form, "nif": nif,
+        "email": email, "service": service};
+
+        var data_users_JSON = JSON.stringify(data);
+
+        $.post('modules/bills/controller/controller_bills.class.php',
+                {alta_users_json: data_users_JSON},
+        function (response) {
+            if (response.success) {
+                window.location.href = response.redirect;
+            }
+            //alert(response);  //para debuguear
+            //}); //para debuguear
+        //}, "json").fail(function (xhr) {
+
+        }, "json").fail(function(xhr, status, error) {
+            //console.log(xhr.responseText);
+            //console.log(xhr.responseJSON);
+
+            if (xhr.responseJSON.error.name)
+                $("#name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.name + "</span>");
+
+            if (xhr.responseJSON.error.last_name)
+                $("#last_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.last_name + "</span>");
+
+            if (xhr.responseJSON.error.bill_date)
+                $("#bill_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.bill_date + "</span>");
+
+            if (xhr.responseJSON.error.service_date)
+                $("#service_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.service_date + "</span>");
+
+            if (xhr.responseJSON.error.address)
+                $("#address").focus().after("<span  class='error1'>" + xhr.responseJSON.error.address + "</span>");
+
+            if (xhr.responseJSON.error.nif)
+                $("#nif").focus().after("<span  class='error1'>" + xhr.responseJSON.error.nif + "</span>");
+
+            if (xhr.responseJSON.error.email)
+                $("#email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.email + "</span>");
+
+            if (xhr.responseJSON.error.paid_form)
+                $("#paid_form").focus().after("<span  class='error1'>" + xhr.responseJSON.error.paid_form + "</span>");
+
+            if (xhr.responseJSON.error.service)
+                $("#e_service").focus().after("<span  class='error1'>" + xhr.responseJSON.error.service + "</span>");
+
+            if (xhr.responseJSON.error_avatar)
+                $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
+
+            if (xhr.responseJSON.success1) {
+                if (xhr.responseJSON.img_avatar !== "/web/media/default-avatar.png") {
+                    //$("#progress").show();
+                    //$("#bar").width('100%');
+                    //$("#percent").html('100%');
+                    //$('.msg').text('').removeClass('msg_error');
+                    //$('.msg').text('Success Upload image!!').addClass('msg_ok').animate({ 'right' : '300px' }, 300);
+                }
+            } else {
+                $("#progress").hide();
+                $('.msg').text('').removeClass('msg_ok');
+                $('.msg').text('Error Upload image!!').addClass('msg_error').animate({'right': '300px'}, 300);
+            }
+        });
+    }
+
+  }
