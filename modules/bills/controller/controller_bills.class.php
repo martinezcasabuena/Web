@@ -1,8 +1,10 @@
 <?php
-include 'modules/bills/utils/functions_bills.inc.php';
-include 'utils/upload.php';
+//include 'modules/bills/utils/functions_bills.inc.php';
+//include 'utils/upload.php';
 
 //include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/upload.php");
 
 //////////////////////////////////////////////////////////////// upload
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
@@ -13,10 +15,10 @@ if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
 
 //////////////////////////////////////////////////////////////// alta_users_json
 if ((isset($_POST['alta_bills_json']))) {
-    alta_users();
+    alta_bills();
 }
 
-function alta_users() {
+function alta_bills() {
     $jsondata = array();
     $billsJSON = json_decode($_POST["alta_bills_json"], true);
     $result = validate_bill($billsJSON);
@@ -115,3 +117,4 @@ if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     }
 }
 include 'modules/bills/view/create_bills.php';
+alert("sa");

@@ -119,6 +119,7 @@ $(document).ready(function () {
 
   //Valida bills /////////////////////////
   $('#submit_bill').click(function () {
+    alert("validate");
       validate_bill();
   });
 
@@ -372,10 +373,10 @@ function validate_bill() {
         var data = {"name": name, "last_name": last_name, "bill_date": bill_date, "service_date": service_date, "address": address, "paid_form": paid_form, "nif": nif,
         "email": email, "service": service};
 
-        var data_users_JSON = JSON.stringify(data);
+        var data_bills_JSON = JSON.stringify(data);
 
         $.post('modules/bills/controller/controller_bills.class.php',
-                {alta_users_json: data_users_JSON},
+                {alta_bills_json: data_bills_JSON},
         function (response) {
             if (response.success) {
                 window.location.href = response.redirect;
@@ -385,8 +386,8 @@ function validate_bill() {
         //}, "json").fail(function (xhr) {
 
         }, "json").fail(function(xhr, status, error) {
-            //console.log(xhr.responseText);
-            //console.log(xhr.responseJSON);
+            console.log("1" + xhr.responseText);
+            console.log("2" + xhr.responseJSON);
 
             if (xhr.responseJSON.error.name)
                 $("#name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.name + "</span>");
