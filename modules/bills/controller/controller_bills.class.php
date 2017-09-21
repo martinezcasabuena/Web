@@ -1,6 +1,13 @@
 <?php
 //include 'modules/bills/utils/functions_bills.inc.php';
 //include 'utils/upload.php';
+/*if ((isset($_POST['alta_bills_json']))) {
+  $jsondata["success"] = true;
+  $jsondata["redirect"] =false;
+  echo json_encode($jsondata);
+  exit;
+}
+*/
 
 //include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
