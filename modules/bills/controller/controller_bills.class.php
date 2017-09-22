@@ -1,5 +1,5 @@
 <?php
-//include 'modules/bills/utils/functions_bills.inc.php';
+
 //include 'utils/upload.php';
 /*if ((isset($_POST['alta_bills_json']))) {
   $jsondata["success"] = true;
@@ -8,9 +8,8 @@
   exit;
 }
 */
-
-//include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/users/utils/functions_user.inc.php");
+// /session_start();
+include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/bills/utils/functions_bills.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/upload.php");
 
 //////////////////////////////////////////////////////////////// upload
@@ -29,7 +28,7 @@ function alta_bills() {
     $jsondata = array();
     $billsJSON = json_decode($_POST["alta_bills_json"], true);
     $result = validate_bill($billsJSON);
-
+    //$result=true;
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/default-avatar.png');
     }
@@ -45,7 +44,7 @@ function alta_bills() {
             'bill_date' => $result['datos']['bill_date'],
             'service_date' => $result['datos']['service_date'],
             'paid_form' => strtoupper($result['datos']['paid_form']),
-            'service' => $result['datos']['service'],
+            'service' => $result['datos']['service']
         );
 
         $mensaje = "Bill has been successfully registered";
@@ -123,5 +122,4 @@ if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
         exit;
     }
 }
-include 'modules/bills/view/create_bills.php';
-alert("sa");
+//include 'modules/bills/view/create_bills.php';

@@ -136,7 +136,7 @@ $(document).ready(function () {
                   $("#nif").val('');
                   $("#email").val('');
                   $("#paid_form").val('Select level');
-                  var inputElements = document.getElementsByClassName('messageCheckbox');
+                  var inputElements = document.getElementsByClassName('service');
                   for (var i = 0; i < inputElements.length; i++) {
                       if (inputElements[i].checked) {
                           inputElements[i].checked = false;
@@ -156,10 +156,10 @@ $(document).ready(function () {
       $("#email").val( response.bill.email);
       $("#paid_form").val( response.bill.paid_form);
       var service = response.bill.service;
-      var inputElements = document.getElementsByClassName('messageCheckbox');
-      for (var i = 0; i < service.length; i++) {
+      var inputElements = document.getElementsByClassName('service');
+      for (var i = 0; i < inputElements.length; i++) {
           for (var j = 0; j < inputElements.length; j++) {
-              if(service[i] ===inputElements[j] )
+              if(inputElements[i] ===inputElements[j] )
                   inputElements[j].checked = true;
           }
       }
@@ -279,7 +279,7 @@ function validate_bill() {
     var nif = document.getElementById('nif').value;
     var email = document.getElementById('email').value;
     var service = [];
-    var inputElements = document.getElementsByClassName('messageCheckbox');
+    var inputElements = document.getElementsByClassName('service');
     var j = 0;
     for (var i = 0; i < inputElements.length; i++) {
         if (inputElements[i].checked) {

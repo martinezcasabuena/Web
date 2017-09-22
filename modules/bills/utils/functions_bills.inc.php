@@ -1,5 +1,5 @@
 <?php
-function validate_bill() {
+function validate_bill($value) {
     $error = array();
     $valido = true;
     $filtro = array(
@@ -34,15 +34,16 @@ function validate_bill() {
     );
 
 
-    $resultado = filter_input_array(INPUT_POST, $filtro);
+    $resultado = filter_var_array($value, $filtro);
 
     //no filter
-    $resultado['paid_form'] = $_POST['paid_form'];
+    $resultado['paid_form'] = $value['paid_form'];
 
+    $resultado['service'] = $value['service'];
 
     /*if ($resultado['bill_date']) {
         //validate to user's over 16
-        $dates = validateAge($_POST['bill_date']);
+        $dates = validateAge($value['bill_date']);
 
         if (!$dates) {
             $error['bill_date'] = 'User must have more than 16 years';
@@ -53,7 +54,7 @@ function validate_bill() {
 
     if ($resultado['bill_date'] && $resultado['service_date']) {
         //compare date of birth with title_date
-        $dates = valida_dates($_POST['service_date'], $_POST['bill_date']);
+        $dates = valida_dates($value['service_date'], $value['bill_date']);
 
         if (!$dates) {
             $error['service_date'] = 'birth date must be before the date of registration and must have more than 16 years.';
@@ -63,23 +64,29 @@ function validate_bill() {
 
 */
 
-    if ($_POST['paid_form'] === 'Selecciona la forma de pago') {
+    if ($value['paid_form'] === 'Selecciona la forma de pago') {
         $error['paid_form'] = "You haven't select a payment method.";
         $valido = false;
     }
 
-    /*if ($_POST['conf_pass'] != $resultado['pass']) {
+    if(count($resultado['service']) <0){ //Se pone a 0 porque no aparecen los checkbox 
+
+            $error['service'] = "Select 1 or more.";
+            $valido = false;
+        }
+
+    /*if ($value['conf_pass'] != $resultado['pass']) {
         $error['conf_pass'] = "Pass doesn't match";
         $valido = false;
     }*/
 /*
-    if ($_POST['conf_email'] != $resultado['email']) {
+    if ($value['conf_email'] != $resultado['email']) {
         $error['conf_email'] = "emails doesn't match";
         $valido = false;
     }
 */
 /*
-    if(count($_POST['interests']) <= 1){
+    if(count($value['interests']) <= 1){
         $error['interests'] = "Select 2 or more.";
         $valido = false;
     }
@@ -121,7 +128,7 @@ function validate_bill() {
         }*/
 
         if (!$resultado['bill_date']) {
-            if($_POST['bill_date'] == ""){
+            if($value['bill_date'] == ""){
                 $error['bill_date'] = "this camp can't empty";
                 $valido = false;
             }else{
@@ -131,7 +138,7 @@ function validate_bill() {
         }
 
         if (!$resultado['service_date']) {
-            if($_POST['service_date'] == ""){
+            if($value['service_date'] == ""){
                 $error['service_date'] = "this camp can't empty";
                 $valido = false;
             }else{

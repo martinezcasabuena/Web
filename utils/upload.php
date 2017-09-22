@@ -31,7 +31,7 @@ function upload_files() {
     //if($_FILES['avatar']['error'] !== 0) { //Assignarem a l'us default-avatar
         //$error .=  'Archivo no subido correctamente <br>';
     //}
-    
+
     ////////////////////////////////////////////////////////////////////////////
     if ($_FILES['file']['size'] > 55000 ){
         $error .=  "Large File Size <br>";
@@ -58,7 +58,7 @@ function upload_files() {
         if ($width > 150 || $height > 150){
             $error .=   "Maximum width and height exceeded. Please upload images below 100x100 px size <br>";
         }
-    }   
+    }
         /*
             $image_size_info    = getimagesize($imagen); //get image size
             if($image_size_info){
@@ -71,18 +71,18 @@ function upload_files() {
         */
 
     ////////////////////////////////////////////////////////////////////////////
-    $upfile = $_SERVER['DOCUMENT_ROOT'].'/1_Backend/3_fileupload_dropzone/media/'.$_FILES['avatar']['name'];
+    $upfile = $_SERVER['DOCUMENT_ROOT'].'/web/media/'.$_FILES['avatar']['name'];
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
             $nombreFichero = $idUnico."-".$_FILES['file']['name'];
             $copiarFichero = true;
             // I use absolute route to move_uploaded_file because this happens when i run ajax
-            $upfile = $_SERVER['DOCUMENT_ROOT'].'/1_Backend/3_fileupload_dropzone/media/'.$nombreFichero;
+            $upfile = $_SERVER['DOCUMENT_ROOT'].'/web/media/'.$nombreFichero;
         }else{
                 $error .=   "Invalid File...";
         }
-    } 
+    }
 
     $i=0;
     if ($error == "") {
@@ -96,7 +96,7 @@ function upload_files() {
             return $return=array('resultado'=>true , 'error'=>$error,'datos'=>$upfile);
         }
         if($_FILES['file']['error'] !== 0) { //Assignarem a l'us default-avatar
-            $upfile = '/1_Backend/3_fileupload_dropzone/media/default-avatar.png';
+            $upfile = '/web/media/default-avatar.png';
             return $return=array('resultado'=>true,'error'=>$error,'datos'=>$upfile);
         }
     }else{
@@ -106,8 +106,8 @@ function upload_files() {
 
 function remove_files(){
 	$name = $_POST["filename"];
-	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/1_Backend/3_fileupload_dropzone/media/'.$name)){
-		unlink($_SERVER['DOCUMENT_ROOT'].'/1_Backend/3_fileupload_dropzone/media/'.$name);
+	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/web/media/'.$name)){
+		unlink($_SERVER['DOCUMENT_ROOT'].'/web/media/'.$name);
 		return true;
 	}else{
 		return false;
