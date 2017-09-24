@@ -63,7 +63,7 @@ function pintar_bill(data) {
     paid_form.innerHTML += data.bill.paid_form;
 
     var service = document.createElement("div");
-    service.innerHTML = "paid_form = ";
+    service.innerHTML = "service = ";
     for(var i =0;i < data.bill.service.length;i++){
     service.innerHTML += " - "+data.bill.service[i];
     }

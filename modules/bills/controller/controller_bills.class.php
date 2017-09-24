@@ -1,14 +1,5 @@
 <?php
-
-//include 'utils/upload.php';
-/*if ((isset($_POST['alta_bills_json']))) {
-  $jsondata["success"] = true;
-  $jsondata["redirect"] =false;
-  echo json_encode($jsondata);
-  exit;
-}
-*/
-// /session_start();
+session_start();
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/bills/utils/functions_bills.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/upload.php");
 
@@ -44,7 +35,8 @@ function alta_bills() {
             'bill_date' => $result['datos']['bill_date'],
             'service_date' => $result['datos']['service_date'],
             'paid_form' => strtoupper($result['datos']['paid_form']),
-            'service' => $result['datos']['service']
+            'service' => $result['datos']['service'],
+            'avatar' => $result_avatar['datos']
         );
 
         $mensaje = "Bill has been successfully registered";

@@ -1,5 +1,4 @@
 //Crear un plugin
-//alert("PRUEBA");
 jQuery.fn.fill_or_clean = function () {
     this.each(function () {
         if ($("#name").val() == "") {
@@ -104,22 +103,22 @@ $(document).ready(function () {
   //Datepicker///////////////////////////
   $("#bill_date").datepicker({
       dateFormat: 'mm/dd/yy',
-      defaultDate: '05/05/1999',
+      defaultDate: 'today',
       changeMonth: true,
       changeYear: true,
       yearRange: '-110:-16'
   });
   $("#service_date").datepicker({
-      maxDate: 'today',
       dateFormat: 'mm/dd/yy',
       defaultDate: 'today',
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      maxDate: 'today',
+      yearRange: '-110:-16'
   });
 
   //Valida bills /////////////////////////
   $('#submit_bill').click(function () {
-    alert("validate");
       validate_bill();
   });
 
@@ -135,7 +134,7 @@ $(document).ready(function () {
                   $("#address").val('');
                   $("#nif").val('');
                   $("#email").val('');
-                  $("#paid_form").val('Select level');
+                  $("#paid_form").val('Selecciona la forma de pago');
                   var inputElements = document.getElementsByClassName('service');
                   for (var i = 0; i < inputElements.length; i++) {
                       if (inputElements[i].checked) {

@@ -40,7 +40,7 @@
                             ?></div>
                     </div>
                     <div class="form-group">
-                        <label>NIF *</label><br />
+                        <label>NIF *</label>
                         <input id="nif" type="text" name="nif" placeholder="NIF" required="required" class="form-control"value="<?php
                         if (!isset($error['nif'])) {
                             echo $_POST ? $_POST['nif'] : "";
@@ -53,7 +53,7 @@
                             ?></div>
                     </div>
                      <div class="form-group">
-                        <label>Dirección*</label><br />
+                        <label>Dirección*</label>
                         <input id="address" type="text" name="address" placeholder="Dirección" required="required" class="form-control"value="<?php
                         if (!isset($error['address'])) {
                             echo $_POST ? $_POST['address'] : "";
@@ -79,7 +79,7 @@
                             ?></div>
                     </div>
                     <div class="form-group">
-                        <label>Fecha Factura *</label><br />
+                        <label>Fecha Factura *</label>
                         <input id="bill_date" type="text" name="bill_date" placeholder="mm/dd/yyyy"  class="form-control"  value="<?php
                         if (!isset($error['bill_date'])) {
                             echo $_POST ? $_POST['bill_date'] : "";
@@ -92,7 +92,7 @@
                             ?></div>
                     </div>
                      <div class="form-group">
-                        <label>Fecha Servicio *</label><br />
+                        <label>Fecha Servicio *</label>
                         <input id="service_date" type="text" name="service_date" placeholder="mm/dd/yyyy"  class="form-control"  value="<?php
                         if (!isset($error['service_date'])) {
                             echo $_POST ? $_POST['service_date'] : "";
@@ -106,9 +106,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Forma de pago *</label><br />
+                        <label>Forma de pago *</label>
                         <select name="paid_form" id="paid_form">
-                            <option selected>Selecciona la forma de pago</option>
+                            <option value ="Selecciona la forma de pago" selected>Selecciona la forma de pago</option>
                             <option value="contado">Contado</option>
                             <option value="transferencia">Transferencia bancaria</option>
                             <option value="tarjeta">Tarjeta de crédito</option>
@@ -122,12 +122,8 @@
                             ?></div>
                     </div>
 
-                </div>
-                <div class="col-sm-5">
-                    </div>
                     <div class="form-group">
-                        <label>Tipo de servicio  *</label><br>
-
+                        <label>Tipo de servicio  *</label>
                         <br>Computing  <input type="checkbox" name="service[]" value="Computing" class="service" checked="true"></br>
                         <br>History  <input type="checkbox" name="service[]" value="History" class="service"checked="checked"></br>
                         <br>Magic  <input type="checkbox" name="service[]" value="Magic" class="service" checked="checked"></br>
@@ -138,7 +134,6 @@
                             }
                             ?></div>
                     </div>
-                    <br />
                     <div class="form-group" id="progress">
                         <div id="bar"></div>
                         <div id="percent">0%</div >
@@ -154,6 +149,7 @@
                     <div class="form-group">
                         <button type="button" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
+                </div>
                 </div>
             </form>
         </div><!--/.row-->

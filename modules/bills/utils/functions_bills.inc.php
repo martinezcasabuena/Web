@@ -69,29 +69,11 @@ function validate_bill($value) {
         $valido = false;
     }
 
-    if(count($resultado['service']) <0){ //Se pone a 0 porque no aparecen los checkbox 
+    if(count($resultado['service']) <1){
 
             $error['service'] = "Select 1 or more.";
             $valido = false;
         }
-
-    /*if ($value['conf_pass'] != $resultado['pass']) {
-        $error['conf_pass'] = "Pass doesn't match";
-        $valido = false;
-    }*/
-/*
-    if ($value['conf_email'] != $resultado['email']) {
-        $error['conf_email'] = "emails doesn't match";
-        $valido = false;
-    }
-*/
-/*
-    if(count($value['interests']) <= 1){
-        $error['interests'] = "Select 2 or more.";
-        $valido = false;
-    }
-
-*/
 
     if ($resultado != null && $resultado) {
 
@@ -121,11 +103,6 @@ function validate_bill($value) {
             $valido = false;
         }
 
-
-        /*if (!$resultado['pass']) {
-            $error['pass'] = 'Pass must be 6 to 32 characters';
-            $valido = false;
-        }*/
 
         if (!$resultado['bill_date']) {
             if($value['bill_date'] == ""){
@@ -170,22 +147,6 @@ function valida_dates($start_days, $dayslight) {
     return false;
 }
 
-/* validate birthday
-function validateAge($birthday, $age = 16) {
-    // $birthday can be UNIX_TIMESTAMP or just a string-date.
-    if (is_string($birthday)) {
-        $birthday = strtotime($birthday);
-    }
-
-    // check
-    // 31536000 is the number of seconds in a 365 days year.
-    if (time() - $birthday < $age * 31536000) {
-        return false;
-    }
-
-    return true;
-}
-*/
 
 //validate email
 function valida_email($email) {
