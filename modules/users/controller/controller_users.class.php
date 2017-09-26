@@ -1,17 +1,18 @@
 <?php
 session_start();
 //include  with absolute route
-include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/3_fileupload_dropzone/modules/users/utils/functions_user.inc.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/3_fileupload_dropzone/utils/upload.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/4_alta/modules/users/utils/functions_user.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/4_alta/utils/upload.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/1_Backend/4_alta/utils/common.inc.php");
 
-//////////////////////////////////////////////////////////////// upload
+/////////////////////////////////////////////////// upload
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
     $result_avatar = upload_files();
     $_SESSION['result_avatar'] = $result_avatar;
     //echo debug($_SESSION['result_avatar']); //se mostraría en alert(response); de dropzone.js
 }
 
-//////////////////////////////////////////////////////////////// alta_users_json
+/////////////////////////////////////////////////// alta_users_json
 if ((isset($_POST['alta_users_json']))) {
     alta_users();
 }
@@ -22,7 +23,7 @@ function alta_users() {
     $result = validate_user($usersJSON);
 
     if (empty($_SESSION['result_avatar'])) {
-        $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/default-avatar.png');
+        $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => '/1_Backend/4_alta/media/default-avatar.png');
     }
     $result_avatar = $_SESSION['result_avatar'];
 
@@ -41,13 +42,21 @@ function alta_users() {
             'avatar' => $result_avatar['datos']
         );
 
-        $mensaje = "User has been successfully registered";
+        /////////////////insert into BD////////////////////////
+        $arrValue = false;
+        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/1_Backend/4_alta/modules/users/model/model/';
+        $arrValue = loadModel($path_model, "user_model", "create_user", $arrArgument);
+        //echo json_encode($arrValue);
+        //die();
 
-        //redirigir a otra p�gina con los datos de $arrArgument y $mensaje
+        if ($arrValue)
+            $mensaje = "Su registro se ha efectuado correctamente, para finalizar compruebe que ha recibido un correo de validacion y siga sus instrucciones";
+        else
+            $mensaje = "No se ha podido realizar su alta. Intentelo mas tarde";
+
         $_SESSION['user'] = $arrArgument;
         $_SESSION['msje'] = $mensaje;
         $callback = "index.php?module=users&view=results_users";
-
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
         echo json_encode($jsondata);
@@ -64,13 +73,13 @@ function alta_users() {
             $jsondata["success1"] = true;
             $jsondata["img_avatar"] = $result_avatar['datos'];
         }
-        header('HTTP/1.0 400 Bad error');
+        header('HTTP/1.0 400 Bad error', true, 404);
         echo json_encode($jsondata);
         //exit;
     }
 }
 
-//////////////////////////////////////////////////////////////// delete
+/////////////////////////////////////////////////// delete
 if (isset($_GET["delete"]) && $_GET["delete"] == true) {
     $_SESSION['result_avatar'] = array();
     $result = remove_files();
@@ -107,6 +116,7 @@ function close_session() {
 /////////////////////////////////////////////////// load_data
 if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     $jsondata = array();
+
     if (isset($_SESSION['user'])) {
         $jsondata["user"] = $_SESSION['user'];
         echo json_encode($jsondata);

@@ -29,7 +29,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#last_name").val("Introduce last name");
             }
         });
-        if ($("#birth_date").val()== "") {
+        if ($("#birth_date").val() == "") {
             $("#birth_date").val("Introduce date of birth");
             $("#birth_date").focus(function () {
                 if ($("#birth_date").val() == "Introduce date of birth") {
@@ -43,7 +43,7 @@ jQuery.fn.fill_or_clean = function () {
             }
         });
         if ($("#title_date").val() == "") {
-            $("#title_date").val( "Introduce date of title");
+            $("#title_date").val("Introduce date of title");
             $("#title_date").focus(function () {
                 if ($("#title_date").val() == "Introduce date of title") {
                     $("#title_date").val('');
@@ -52,85 +52,85 @@ jQuery.fn.fill_or_clean = function () {
         }
         $("#title_date").blur(function () {
             if ($("#title_date").val() == "") {
-                $("#title_date").val( "Introduce date of title");
+                $("#title_date").val("Introduce date of title");
             }
         });
         if ($("#address").val() == "") {
-            $("#address").val( "Introduce address");
+            $("#address").val("Introduce address");
             $("#address").focus(function () {
                 if ($("#address").val() == "Introduce address") {
-                    $("#address").val( "");
+                    $("#address").val("");
                 }
             });
         }
         $("#address").blur(function () {
             if ($("#address").val() == "") {
-                $("#address").val( "Introduce address");
+                $("#address").val("Introduce address");
             }
         });
         if ($("#user").val() == "") {
-            $("#user").val( "Introduce user");
+            $("#user").val("Introduce user");
             $("#user").focus(function () {
                 if ($("#user").val() == "Introduce user") {
-                    $("#user").val( "");
+                    $("#user").val("");
                 }
             });
         }
         $("#user").blur(function () {
             if ($("#user").val() == "") {
-                $("#user").val( "Introduce user");
+                $("#user").val("Introduce user");
             }
         });
         if ($("#pass").val() == "") {
-            $("#pass").val( "password");
+            $("#pass").val("password");
             $("#pass").focus(function () {
                 if ($("#pass").val() == "password") {
-                    $("#pass").val( "");
+                    $("#pass").val("");
                 }
             });
         }
         $("#pass").blur(function () {
             if ($("#pass").val() == "") {
-                $("#pass").val( "password");
+                $("#pass").val("password");
             }
         });
         if ($("#conf_pass").val() == "") {
-            $("#conf_pass").val( "password");
+            $("#conf_pass").val("password");
             $("#conf_pass").focus(function () {
                 if ($("#conf_pass").val() == "password") {
-                    $("#conf_pass").val( "");
+                    $("#conf_pass").val("");
                 }
             });
         }
         $("#conf_pass").blur(function () {
             if ($("#conf_pass").val() == "") {
-                $("#conf_pass").val( "password");
+                $("#conf_pass").val("password");
             }
         });
         if ($("#email").val() == "") {
-            $("#email").val( "Introduce email");
+            $("#email").val("Introduce email");
             $("#email").focus(function () {
                 if ($("#email").val() == "Introduce email") {
-                    $("#email").val( "");
+                    $("#email").val("");
                 }
             });
         }
         $("#email").blur(function () {
             if ($("#email").val() == "") {
-                $("#email").val( "Introduce email");
+                $("#email").val("Introduce email");
             }
         });
         if ($("#conf_email").val() == "") {
-            $("#conf_email").val( "Repeat email");
+            $("#conf_email").val("Repeat email");
             $("#conf_email").focus(function () {
                 if ($("#conf_email").val() == "Repeat email") {
-                    $("#conf_email").val( "");
+                    $("#conf_email").val("");
                 }
             });
         }
         $("#conf_email").blur(function () {
             if ($("#conf_email").val() == "") {
-                $("#conf_email").val( "Repeat email");
+                $("#conf_email").val("Repeat email");
             }
         });
     });//each
@@ -185,24 +185,24 @@ $(document).ready(function () {
                         }
                     }
                     //siempre que creemos un plugin debemos llamarlo, sino no funcionará
-    $(this).fill_or_clean();
+                    $(this).fill_or_clean();
                 } else {
-                    $("#name").val( response.user.name);
-                    $("#last_name").val( response.user.last_name);
-                    $("#birth_date").val( response.user.birth_date);
-                    $("#title_date").val( response.user.title_date);
-                    $("#address").val( response.user.address);
-                    $("#user").val( response.user.user);
-                    $("#pass").val( response.user.pass);
-                    $("#conf_pass").val( response.user.conf_pass);
-                    $("#email").val( response.user.email);
-                    $("#conf_email").val( response.user.conf_email);
-                    $("#en_lvl").val( response.user.en_lvl);
+                    $("#name").val(response.user.name);
+                    $("#last_name").val(response.user.last_name);
+                    $("#birth_date").val(response.user.birth_date);
+                    $("#title_date").val(response.user.title_date);
+                    $("#address").val(response.user.address);
+                    $("#user").val(response.user.user);
+                    $("#pass").val(response.user.pass);
+                    $("#conf_pass").val(response.user.conf_pass);
+                    $("#email").val(response.user.email);
+                    $("#conf_email").val(response.user.conf_email);
+                    $("#en_lvl").val(response.user.en_lvl);
                     var interests = response.user.interests;
                     var inputElements = document.getElementsByClassName('messageCheckbox');
                     for (var i = 0; i < interests.length; i++) {
                         for (var j = 0; j < inputElements.length; j++) {
-                            if(interests[i] ===inputElements[j] )
+                            if (interests[i] === inputElements[j])
                                 inputElements[j].checked = true;
                         }
                     }
@@ -336,7 +336,7 @@ $(document).ready(function () {
 
 function validate_user() {
     var result = true;
-
+    
     var name = document.getElementById('name').value;
     var last_name = document.getElementById('last_name').value;
     var birth_date = document.getElementById('birth_date').value;
@@ -367,7 +367,7 @@ function validate_user() {
     var usr_reg = /^[0-9a-zA-Z]{2,20}$/;
 
     $(".error").remove();
-
+    
     if ($("#name").val() == "" || $("#name").val() == "Introduce name") {
         $("#name").focus().after("<span class='error'>Introduce name</span>");
         result = false;
@@ -472,23 +472,40 @@ function validate_user() {
     if (result) {
         var data = {"name": name, "last_name": last_name, "birth_date": birth_date, "title_date": title_date, "address": address, "en_lvl": en_lvl, "user": user, "pass": pass, "conf_pass": conf_pass,
             "email": email, "conf_email": conf_email, "interests": interests};
-
         var data_users_JSON = JSON.stringify(data);
 
         $.post('modules/users/controller/controller_users.class.php',
                 {alta_users_json: data_users_JSON},
         function (response) {
+            console.log(response);
             if (response.success) {
                 window.location.href = response.redirect;
             }
             //alert(response);  //para debuguear
             //}); //para debuguear
-        //}, "json").fail(function (xhr) {
-
-        }, "json").fail(function(xhr, status, error) {
-            console.log(xhr.responseText);
-            console.log(xhr.responseJSON);
-
+        }, "json").fail(function (xhr, textStatus, errorThrown ) {
+            //alert(xhr.status);
+            //alert(textStatus);
+            //alert(errorThrown);
+            if (xhr.status === 0) {
+                alert('Not connect: Verify Network.');
+            } else if (xhr.status == 404) {
+                alert('Requested page not found [404]');
+            } else if (xhr.status == 500) {
+                alert('Internal Server Error [500].');
+            } else if (textStatus === 'parsererror') {
+                alert('Requested JSON parse failed.');
+            } else if (textStatus === 'timeout') {
+                alert('Time out error.');
+            } else if (textStatus === 'abort') {
+                alert('Ajax request aborted.');
+            } else {
+                alert('Uncaught Error: ' + xhr.responseText);
+            }
+            
+            if (xhr.responseJSON == 'undefined' && xhr.responseJSON == null )
+                xhr.responseJSON = JSON.parse(xhr.responseText);
+            
             if (xhr.responseJSON.error.name)
                 $("#name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.name + "</span>");
 
@@ -529,7 +546,7 @@ function validate_user() {
                 $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
 
             if (xhr.responseJSON.success1) {
-                if (xhr.responseJSON.img_avatar !== "/3_fileupload_dropzone/media/default-avatar.png") {
+                if (xhr.responseJSON.img_avatar !== "/PhpProject1/media/default-avatar.png") {
                     //$("#progress").show();
                     //$("#bar").width('100%');
                     //$("#percent").html('100%');

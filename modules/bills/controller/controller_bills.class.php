@@ -1,7 +1,9 @@
 <?php
 session_start();
+
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/bills/utils/functions_bills.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/upload.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/common.inc.php");
 
 //////////////////////////////////////////////////////////////// upload
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
@@ -38,6 +40,13 @@ function alta_bills() {
             'service' => $result['datos']['service'],
             'avatar' => $result_avatar['datos']
         );
+
+        /////////////////insert into BD////////////////////////
+        $arrValue = false;
+        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/bills/model/model/';
+        $arrValue = loadModel($path_model, "bill_model", "create_bill", $arrArgument);
+        //echo json_encode($arrValue);
+        //die();
 
         $mensaje = "Bill has been successfully registered";
 

@@ -5,11 +5,11 @@
 <script type="text/javascript" src="modules/users/view/js/users.js" ></script>
 <section id="contact-page">
     <div class="container">
-        <div class="center">
+        <div class="center">        
             <h2>ADD USER    </h2>
             <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="row contact-wrap">
+        </div> 
+        <div class="row contact-wrap"> 
             <div class="status alert alert-success" style="display: none"></div>
 
             <form id="form_user" name="form_user"><!---->
@@ -89,7 +89,7 @@
                     </div>
                     <br />
                     <div class="form-group">
-                        <label>Confirm Email *</label>
+                        <label>Confirm Email *</label> 
                         <input type="email" id="conf_email" name="conf_email" placeholder="confirm e-mail" value="" class="form-control" required="required" >
                         <div id="e_conf_email"></div>
                     </div>
@@ -118,12 +118,12 @@
                     <br/>
                     <br/>
                     <br/>
-
+                    
                     <div class="form-group">
                         <button type="button" id="submit_user" name="submit_user" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
                 </div>
-            </form>
+            </form> 
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#contact-page-->

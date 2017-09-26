@@ -124,10 +124,10 @@
 
                     <div class="form-group">
                         <label>Tipo de servicio  *</label>
-                        <br>Computing  <input type="checkbox" name="service[]" value="Computing" class="service" checked="true"></br>
-                        <br>History  <input type="checkbox" name="service[]" value="History" class="service"checked="checked"></br>
-                        <br>Magic  <input type="checkbox" name="service[]" value="Magic" class="service" checked="checked"></br>
-                        <br>Music   <input type="checkbox" name="service[]" value="Music" class="service" checked="checked"></br>
+                        <br>Venta  <input type="checkbox" name="service[]" value="Venta" class="service" checked="true"></br>
+                        <br>Reparación  <input type="checkbox" name="service[]" value="Reparacion" class="service"checked="checked"></br>
+                        <br>Sustitución  <input type="checkbox" name="service[]" value="Sustitucion" class="service" checked="checked"></br>
+                        <br>Revisión   <input type="checkbox" name="service[]" value="Revision" class="service" checked="checked"></br>
                         <div id="e_service"><?php
                             if (isset($error['service'])) {
                                 print ("<BR><span style='color: #ff0000'>" . "* " . $error['service'] . "</span><br/>");
