@@ -52,19 +52,19 @@
                             }
                             ?></div>
                     </div>
-                     <div class="form-group">
-                        <label>Dirección*</label>
-                        <input id="address" type="text" name="address" placeholder="Dirección" required="required" class="form-control"value="<?php
-                        if (!isset($error['address'])) {
-                            echo $_POST ? $_POST['address'] : "";
-                        }
-                        ?>">
-                        <div id="e_address"><?php
-                            if (isset($error['address'])) {
-                                print ("<BR><span style='color: #ff0000'>" . "* " . $error['address'] . "</span><br/>");
-                            }
-                            ?></div>
-                    </div>
+                       <div class="form-group">
+                          <label>Dirección*</label>
+                          <input id="address" type="text" name="address" placeholder="Dirección" required="required" class="form-control"value="<?php
+                          if (!isset($error['address'])) {
+                              echo $_POST ? $_POST['address'] : "";
+                          }
+                          ?>">
+                          <div id="e_address"><?php
+                              if (isset($error['address'])) {
+                                  print ("<BR><span style='color: #ff0000'>" . "* " . $error['address'] . "</span><br/>");
+                              }
+                              ?></div>
+                      </div>
                       <div class="form-group">
                         <label>E-mail *</label>
                         <input id="email" type="email" name="email" placeholder="e-mail" class="form-control" required="required" value="<?php
@@ -101,6 +101,42 @@
                         <div id="e_service_date"><?php
                             if (isset($error['service_date'])) {
                                 print ("<BR><span style='color: #ff0000'>" . "* " . $error['service_date'] . "</span><br/>");
+                            }
+                            ?></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>País *</label>
+                        <select name="country" id="country">
+                            <option value ="Selecciona el pais" selected>Selecciona el pais</option>
+                        </select>
+                        <div id="e_country"><?php
+                            if (isset($error['country'])) {
+                                print ("<BR><span style='color: #ff0000'>" . "* " . $error['country'] . "</span><br/>");
+                            }
+                            ?></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Provincia *</label>
+                        <select name="province" id="province">
+                            <option value ="Selecciona la provincia" selected>Selecciona la provincia</option>
+                        </select>
+                        <div id="e_province"><?php
+                            if (isset($error['province'])) {
+                                print ("<BR><span style='color: #ff0000'>" . "* " . $error['province'] . "</span><br/>");
+                            }
+                            ?></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ciudad *</label>
+                        <select name="city" id="city">
+                            <option value ="Selecciona la ciudad" selected>Selecciona la ciudad</option>
+                        </select>
+                        <div id="e_city"><?php
+                            if (isset($error['city'])) {
+                                print ("<BR><span style='color: #ff0000'>" . "* " . $error['city'] . "</span><br/>");
                             }
                             ?></div>
                     </div>

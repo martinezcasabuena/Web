@@ -45,7 +45,7 @@ class billDAO {
                 . " ) VALUES ('$name', '$last_name', '$bill_date',"
                 . " '$service_date', '$address', '$nif', '$email', '$paid_form', '$venta', '$reparacion',"
                 . "'$sustitucion', '$revision', '$avatar')";
-
+                
         return $db->ejecutar($sql);
     }
 }
