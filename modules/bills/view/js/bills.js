@@ -135,9 +135,9 @@ $(document).ready(function () {
                   $("#nif").val('');
                   $("#email").val('');
                   $("#paid_form").val('Selecciona la forma de pago');
-                  $('#country').val('Selecciona el pais');
-                  $('#province').val('Selecciona la provincia');
-                  $('#city').val('Selecciona la ciudad');
+                  $("#country").val('Selecciona el pais');
+                  $("#province").val('Selecciona la provincia');
+                  $("#city").val('Selecciona la ciudad');
                   var inputElements = document.getElementsByClassName('service');
                   for (var i = 0; i < inputElements.length; i++) {
                       if (inputElements[i].checked) {
@@ -157,9 +157,9 @@ $(document).ready(function () {
       $("#nif").val( response.bill.nif);
       $("#email").val( response.bill.email);
       $("#paid_form").val( response.bill.paid_form);
-      $('#country').val(response.bill.country);
-      $('#province').val(response.bill.province);
-      $('#city').val(response.bill.city);
+      $("#country").val(response.bill.country);
+      $("#province").val(response.bill.province);
+      $("#city").val(response.bill.city);
       var service = response.bill.service;
       var inputElements = document.getElementsByClassName('service');
       for (var i = 0; i < inputElements.length; i++) {
@@ -269,9 +269,12 @@ $(document).ready(function () {
             $(".error").fadeOut();
             return false;
         }
+    });
 
         //Dependent combos //////////////////////////////////
         load_countries_v1();
+        //load_countries_v2("resources/ListOfCountryNamesByName.json");
+
 
         $("#province").empty();
         $("#province").append('<option value="" selected="selected">Seleciona la provincia</option>');
@@ -293,14 +296,14 @@ $(document).ready(function () {
     		}else{
     	         province.prop('disabled', false);
     	         city.prop('disabled', false);
-    	         load_provinces_v1();
+    	         load_provinces_v2();
     		}//fi else
     	});
 
     	$("#province").change(function() {
     		var prov = $(this).val();
     		if(prov > 0){
-    			load_cities_v1(prov);
+    			load_cities_v2(prov);
     		}else{
     			$("#city").prop('disabled', false);
     		}
@@ -315,6 +318,9 @@ function validate_bill() {
     var bill_date = document.getElementById('bill_date').value;
     var service_date = document.getElementById('service_date').value;
     var address = document.getElementById('address').value;
+    var country = document.getElementById('country').value;
+    var province = document.getElementById('province').value;
+    var city = document.getElementById('city').value;
     var paid_form = document.getElementById('paid_form').value;
     var nif = document.getElementById('nif').value;
     var email = document.getElementById('email').value;
@@ -515,7 +521,7 @@ function validate_bill() {
             }
         });
     }
-
+}
     function load_countries_v2(cad) {
         $.getJSON( cad, function(data) {
           $("#country").empty();
@@ -629,5 +635,4 @@ function validate_bill() {
     	.fail(function() {
             load_cities_v2(prov);
         });
-
-  }
+    }

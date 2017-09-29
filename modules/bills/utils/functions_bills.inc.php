@@ -38,8 +38,10 @@ function validate_bill($value) {
 
     //no filter
     $resultado['paid_form'] = $value['paid_form'];
-
     $resultado['service'] = $value['service'];
+    $resultado['country'] = $value['country'];
+    $resultado['province'] = $value['province'];
+    $resultado['city'] = $value['city'];
 
     /*if ($resultado['bill_date']) {
         //validate to user's over 16
@@ -123,6 +125,21 @@ function validate_bill($value) {
             $valido = false;
             }
         }
+
+        if ($resultado['country']==='Selecciona el pais'){
+                $error['country']="You need to choose a country";
+                $valid = false;
+            }
+
+        if ($resultado['province']==='Selecciona la pronvincia'){
+                $error['province']="You need to choose a province";
+                $valid = false;
+            }
+
+        if ($resultado['city']==='Selecciona la ciudad'){
+                $error['city']="You need to choose a city";
+                $valid = false;
+            }
     } else {
         $valido = false;
     };

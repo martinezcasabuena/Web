@@ -185,8 +185,7 @@
                     <div class="form-group">
                         <button type="button" id="submit_bill" name="submit_bill" class="btn btn-primary btn-lg" value="submit">Submit Message</button>
                     </div>
-                </div>
-                </div>
+
             </form>
         </div><!--/.row-->
     </div><!--/.container-->

@@ -34,6 +34,9 @@ CREATE TABLE `bills` (
   `address` varchar(100) DEFAULT NULL,
   `nif` varchar(50) NOT NULL,
   `paid_form` varchar(45) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
   `venta` tinyint(1) DEFAULT NULL,
   `reparacion` tinyint(1) DEFAULT NULL,
   `sustitucion` tinyint(1) DEFAULT NULL,
@@ -49,8 +52,8 @@ CREATE TABLE `bills` (
 
 LOCK TABLES `bills` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `bills` (name, last_name, bill_date, service_date, address, nif, email, paid_form,venta,reparacion,sustitucion,revision, avatar)
- VALUES ('Ana','Marti Saborit','20/12/2015','20/12/2016','Avd pruebas','49256325S','anarcar@gmail.com','Contado',0,0,1,1,'/web/media/default-avatar.png');
+INSERT INTO `bills` (name, last_name, bill_date, service_date, address, nif, email, paid_form,country, province,city,venta,reparacion,sustitucion,revision, avatar)
+ VALUES ('Ana','Marti Saborit','20/12/2015','20/12/2016','Avd pruebas','49256325S','anarcar@gmail.com','Contado','Spain','Valencia','Ontinyent',0,0,1,1,'/web/media/default-avatar.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
