@@ -32,14 +32,14 @@
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="index.php?module=bills&view=create_bills">Sign up</a></li>
+						?>"><a href="index.php?module=bills&view=create_bills">Create Bills</a></li>
 
 						<li class="
-						<?php if($_GET['module'] === 'users')
+						<?php if($_GET['module'] === 'list_bills')
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="index.php?module=users&view=create_users">Users</a></li>
+						?>"><a href="index.php?module=list_bills&view=list_bills">List Bills</a></li>
 					</ul>
 				</div>
 			</li>
