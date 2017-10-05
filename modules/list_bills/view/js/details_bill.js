@@ -1,5 +1,5 @@
 function load_details() {
-    var jqxhr = $.get("modules/list_bills/controller/controller_bills.class.php?details_bill=true", function (data) {
+    var jqxhr = $.get("modules/list_bills/controller/controller_bills.class.php?details_bill", function (data) {
 
         //alert( "success" );
     }).done(function () {
@@ -16,5 +16,5 @@ function load_details() {
 
 $(document).ready(function () {
     load_details();
-    alert();
+    alert("Details");
 });

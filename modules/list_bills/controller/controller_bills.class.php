@@ -14,14 +14,15 @@ if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
   exit;
 }
 
-if ((isset($_GET["details_bill"])) && ($_GET["details_bill"] == true)) {
-
-  $idbill=get['details_bill']
+if ((isset($_GET["details_bill"]))) {
+  echo "sasa";
+  $idBill=($_GET["details_bill"]);
   $callback = "index.php?module=list_bills&view=details_bill";
   $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
-  $arrValue = loadModel($path_model, "bill_model", "details_bill");
+  $arrValue = loadModel($path_model, "bill_model", "details_bill",$idBill);
   $jsondata["bill"] = $arrValue;
   echo json_encode($jsondata);
+  exit;
 }
 
 

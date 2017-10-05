@@ -45,13 +45,10 @@ function pintar_bill(data) {
 
    function verDetalles(){
      alert(this.id);
-     $.get("modules/products/controller/controller_products.class.php?details_bill=" + this.id, function (data) {
+     var idBill=this.id;
+     $.get("modules/list_bills/controller/controller_bills.class.php?details_bill=" + idBill, function (data) {
 
          //alert( "success" );
      })
-}
-
-
-
-
+   }
 }
