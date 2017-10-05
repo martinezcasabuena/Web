@@ -17,6 +17,12 @@ class billDAO {
         $sql = "SELECT * FROM bills";
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
+    }
+
+    public function details_bill_DAO($db,$id) {
+        $sql = "SELECT * FROM bills WHERE id=".$id;
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
 
     }
 }

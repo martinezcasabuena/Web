@@ -28,4 +28,8 @@ class bill_bll {
         return $this->dao->list_bills_DAO($this->db);
     }
 
+    public function details_bill_BLL($id) {
+        return $this->dao->details_bill_DAO($this->db,$id);
+    }
+
 }

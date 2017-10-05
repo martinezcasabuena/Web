@@ -22,4 +22,8 @@ class bill_model {
         return $this->bll->list_bills_BLL();
     }
 
+    public function details_bill($id) {
+        return $this->bll->details_bill_BLL($id);
+    }
+
 }

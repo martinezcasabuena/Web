@@ -21,73 +21,37 @@ $(document).ready(function () {
 });
 
 function pintar_bill(data) {
-    //alert(data.bill.avatar);
 
+    var result;
+    for(var i=0;i<data.bill.length;i++)
+    {
+      console.log(data.bill[i].name + ' ' + data.bill[i].last_name + ' ' + data.bill[i].id);
+      result = data.bill[i].name + ' ' + data.bill[i].last_name + ' ' + data.bill[i].id;
 
-    alert(data.bill.name);
+      var lista = document.getElementById("content");
+      var div = document.createElement("div");
+      var label = document.createElement("label");
+      var btnDetails = document.createElement("button");
 
-    /*var msje = document.createElement("div");
-    msje.innerHTML = "msje = ";
-    msje.innerHTML += data.msje;
+      label.appendChild(document.createTextNode(result));
+      btnDetails.appendChild(document.createTextNode("Detalles"));
+      btnDetails.id=data.bill[i].id;
+      div.appendChild(label);
+      label.appendChild(btnDetails);
+      lista.appendChild(div);
+      btnDetails.onclick= verDetalles;
 
-
-
-    var last_name = document.createElement("div");
-    last_name.innerHTML = "last_name = ";
-    last_name.innerHTML += data.bill.last_name;
-
-    var bill_date = document.createElement("div");
-    bill_date.innerHTML = "bill_date = ";
-    bill_date.innerHTML += data.bill.bill_date;
-
-    var service_date = document.createElement("div");
-    service_date.innerHTML = "service_date = ";
-    service_date.innerHTML += data.bill.service_date;
-
-    var address = document.createElement("div");
-    address.innerHTML = "address = ";
-    address.innerHTML += data.bill.address;
-
-    var nif = document.createElement("div");
-    nif.innerHTML = "nif = ";
-    nif.innerHTML += data.bill.nif;
-
-    var email = document.createElement("div");
-    email.innerHTML = "email = ";
-    email.innerHTML += data.bill.email;
-
-    var paid_form = document.createElement("div");
-    paid_form.innerHTML = "paid_form = ";
-    paid_form.innerHTML += data.bill.paid_form;
-
-    var service = document.createElement("div");
-    service.innerHTML = "service = ";
-    for(var i =0;i < data.bill.service.length;i++){
-    service.innerHTML += " - "+data.bill.service[i];
     }
 
-    //arreglar ruta IMATGE!!!!!
+   function verDetalles(){
+     alert(this.id);
+     $.get("modules/products/controller/controller_products.class.php?details_bill=" + this.id, function (data) {
 
-    var cad = data.bill.avatar;
-    //console.log(cad);
-    //var cad = cad.toLowerCase();
-    var img = document.createElement("div");
-    var html = '<img src="' + cad + '" height="75" width="75"> ';
-    img.innerHTML = html;
-    //alert(html);
+         //alert( "success" );
+     })
+}
 
-    div_bill.appendChild(parrafo);
-    parrafo.appendChild(msje);
-    parrafo.appendChild(name);
-    parrafo.appendChild(last_name);
-    parrafo.appendChild(bill_date);
-    parrafo.appendChild(service_date);
-    parrafo.appendChild(address);
-    parrafo.appendChild(paid_form);
-    parrafo.appendChild(nif);
-    parrafo.appendChild(email);
-    parrafo.appendChild(service);
-    content.appendChild(div_bill);
-    content.appendChild(img);
-    */
+
+
+
 }
