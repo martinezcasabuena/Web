@@ -40,14 +40,13 @@ function pintar_bill(data) {
       label.appendChild(btnDetails);
       lista.appendChild(div);
       btnDetails.onclick= verDetalles;
-
     }
 
    function verDetalles(){
      alert(this.id);
      var idBill=this.id;
      $.get("modules/list_bills/controller/controller_bills.class.php?details_bill=" + idBill, function (data) {
-
+       window.location.replace("index.php?module=list_bills&view=details_bill");
          //alert( "success" );
      })
    }

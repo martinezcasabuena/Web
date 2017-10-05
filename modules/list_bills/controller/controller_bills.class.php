@@ -15,17 +15,19 @@ if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
 }
 
 if ((isset($_GET["details_bill"]))) {
-  echo "sasa";
   $idBill=($_GET["details_bill"]);
-  $callback = "index.php?module=list_bills&view=details_bill";
   $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
   $arrValue = loadModel($path_model, "bill_model", "details_bill",$idBill);
   $jsondata["bill"] = $arrValue;
+  $_SESSION["loadedBill"]=$jsondata;
   echo json_encode($jsondata);
   exit;
 }
 
-
+if ((isset($_GET["loadBill"]))) {
+  echo json_encode($_SESSION["loadedBill"]);
+  exit;
+}
 
 function close_session() {
     unset($_SESSION['bill']);
