@@ -20,6 +20,14 @@ $(document).ready(function () {
     load_bills();
 });
 
+$(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+      alert();
+           // ajax call get data from server and append to the div
+    }
+});
+
+
 function pintar_bill(data) {
 
     var result;
