@@ -13,12 +13,8 @@ class billDAO {
         return self::$_instance;
     }
 
-    public function list_bills_DAO($db,$numPage) {
-      if($numPage==0){
+    public function list_bills_DAO($db) {
         $sql = "SELECT * FROM bills";
-      }else{
-        $sql = "SELECT * FROM bills limit $numPage";
-      }
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }

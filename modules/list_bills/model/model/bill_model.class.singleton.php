@@ -18,8 +18,8 @@ class bill_model {
         return self::$_instance;
     }
 
-    public function list_bills($numPage) {
-        return $this->bll->list_bills_BLL($numPage);
+    public function list_bills() {
+        return $this->bll->list_bills_BLL();
     }
 
     public function details_bill($id) {

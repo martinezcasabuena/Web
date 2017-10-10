@@ -7,28 +7,17 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/common.inc.php");
 
 
 if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
-  /*if ((($_SESSION["page"]))) {
-    $numPage= $_SESSION["page"]+3;
     $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
     $arrValue = loadModel($path_model, "bill_model", "list_bills");
     $jsondata["bill"] = $arrValue;
     echo json_encode($jsondata);
     exit;
-  }else{*/
-    $numPage=($_GET["allbills"]);
-
-    $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
-    $arrValue = loadModel($path_model, "bill_model", "list_bills",$numPage);
-    $jsondata["bill"] = $arrValue;
-    echo json_encode($jsondata);
-    exit;
-  //}
 }
 
 if ((isset($_GET["details_bill"]))) {
   $idBill=($_GET["details_bill"]);
   $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
-  $arrValue = loadModel($path_model, "bill_model", "details_bill");
+  $arrValue = loadModel($path_model, "bill_model", "details_bill",$idBill);
   $jsondata["bill"] = $arrValue;
   $_SESSION["loadedBill"]=$jsondata;
   echo json_encode($jsondata);

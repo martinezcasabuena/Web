@@ -20,12 +20,35 @@ $(document).ready(function () {
     load_bills();
 });
 
-$(window).scroll(function() {
+/*$(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
       alert();
            // ajax call get data from server and append to the div
     }
-});
+});*/
+
+/*  $(window).scroll(function() {
+  if( $(window).scrollTop() > oldscroll ){ //if we are scrolling down
+    if( ($(window).scrollTop() + $(window).height() >= $(document).height()  ) && (current_page <= total_pages) ) {
+          if( ! loading ){
+          loading = true;
+          $('#messages-list').addClass('loading');
+          $.ajax({
+            'url':'get_data.php',
+            'type':'post',
+            'data': 'p='+current_page,
+            success:function(data){
+              var data	=	$.parseJSON(data);
+              $(data.html).hide().appendTo('#messages-list').fadeIn(1000);
+              current_page++;
+              $('#messages-list').removeClass('loading');
+              loading = false;
+            }
+          });
+          }
+    }
+  }
+});*/
 
 
 function pintar_bill(data) {

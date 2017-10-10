@@ -24,8 +24,8 @@ class bill_bll {
         return self::$_instance;
     }
 
-    public function list_bills_BLL($numPage) {
-        return $this->dao->list_bills_DAO($this->db,$numPage);
+    public function list_bills_BLL() {
+        return $this->dao->list_bills_DAO($this->db);
     }
 
     public function details_bill_BLL($id) {
