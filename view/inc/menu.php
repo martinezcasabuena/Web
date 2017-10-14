@@ -39,7 +39,7 @@
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="index.php?module=list_bills&view=list_bills">List Bills</a></li>
+						?>"><a href="<?php amigable('?module=listbills&function=form_bills'); ?>">List Bills</a></li>
 					</ul>
 				</div>
 			</li>

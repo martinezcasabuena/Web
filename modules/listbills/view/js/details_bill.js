@@ -1,7 +1,7 @@
 function load_details() {
 //  $idBill=$_SESSION["idBill"];
 
-    var jqxhr = $.get("modules/list_bills/controller/controller_bills.class.php?loadBill", function (data) {
+    var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?loadBill", function (data) {
         //alert( "success" );
         var json = JSON.parse(data);
         console.log(json);

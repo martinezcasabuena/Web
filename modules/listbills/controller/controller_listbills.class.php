@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/bills/utils/functions_bills.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/web/modules/listbills/utils/functions_listbills.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/upload.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/web/utils/common.inc.php");
 
 
 if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
-    $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
-    $arrValue = loadModel($path_model, "bill_model", "list_bills");
+    $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/listbills/model/model/';
+    $arrValue = loadModel($path_model, "listbills_model", "list_bills");
     $jsondata["bill"] = $arrValue;
     echo json_encode($jsondata);
     exit;
@@ -16,8 +16,8 @@ if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
 
 if ((isset($_GET["details_bill"]))) {
   $idBill=($_GET["details_bill"]);
-  $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/list_bills/model/model/';
-  $arrValue = loadModel($path_model, "bill_model", "details_bill",$idBill);
+  $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/listbills/model/model/';
+  $arrValue = loadModel($path_model, "listbills_model", "details_bill",$idBill);
   $jsondata["bill"] = $arrValue;
   $_SESSION["loadedBill"]=$jsondata;
   echo json_encode($jsondata);

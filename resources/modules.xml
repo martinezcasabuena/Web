@@ -9,7 +9,7 @@
         <uri>bills</uri>
     </module>
     <module>
-        <name>list_bills</name>
-        <uri>list_bills</uri>
+        <name>listbills</name>
+        <uri>listbills</uri>
     </module>
 </modules>

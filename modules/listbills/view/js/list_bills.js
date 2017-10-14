@@ -1,5 +1,5 @@
 function load_bills() {
-    var jqxhr = $.get("modules/list_bills/controller/controller_bills.class.php?allbills=true", function (data) {
+    var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?allbills=true", function (data) {
         var json = JSON.parse(data);
         console.log(json);
         pintar_bill(json);
@@ -82,8 +82,8 @@ function pintar_bill(data) {
 
    function verDetalles(){
      var idBill=this.id;
-     $.get("modules/list_bills/controller/controller_bills.class.php?details_bill=" + idBill, function (data) {
-       window.location.replace("index.php?module=list_bills&view=details_bill");
+     $.get("modules/listbills/controller/controller_listbills.class.php?details_bill=" + idBill, function (data) {
+       window.location.replace("index.php?module=listbills&view=details_bill");
          //alert( "success" );
      })
    }

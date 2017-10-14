@@ -2,14 +2,14 @@
 
 $path = $_SERVER['DOCUMENT_ROOT'] . '/web/';
 define('SITE_ROOT', $path);
-require(SITE_ROOT . "modules/list_bills/model/BLL/bill_bll.class.singleton.php");
+require(SITE_ROOT . "modules/listbills/model/BLL/listbills_bll.class.singleton.php");
 
-class bill_model {
+class listbills_model {
     private $bll;
     static $_instance;
 
     private function __construct() {
-        $this->bll = bill_bll::getInstance();
+        $this->bll = listbills_bll::getInstance();
     }
 
     public static function getInstance() {
