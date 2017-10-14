@@ -7,7 +7,7 @@
         <div class="row contact-wrap">
             <div class="status alert alert-success" style="display: none"></div>
             <div id="content"></div>
-            <script type="text/javascript" src="modules/bills/view/js/list_bill.js" ></script>
+            <script type="text/javascript" src="<?php echo BILLS_JS_PATH ?>list_bill.js" ></script>
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#contact-page-->

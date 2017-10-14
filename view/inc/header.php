@@ -1,21 +1,25 @@
+<!DOCTYPE html>
 <!-- Header -->
 <html>
 <header id="header" class="alt">
+	<title><?php if($_GET['module']){ echo $_GET['module'];}else{ echo "main";} ?> </title>
 
 	<!-- CSS -->
-	<link href="view/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="view/css/ie8.css" rel="stylesheet" />
-	<link href="view/css/ie9.css" rel="stylesheet" />
-	<link href="view/css/main.css" rel="stylesheet" />
+	<link href="<?php echo CSS_PATH ?>font-awesome.min.css" rel="stylesheet" />
+	<link href="<?php echo CSS_PATH ?>ie8.css" rel="stylesheet" />
+	<link href="<?php echo CSS_PATH ?>ie9.css" rel="stylesheet" />
+	<link href="<?php echo CSS_PATH ?>main.css" rel="stylesheet" />
+
 
 	<!-- Scripts -->
-	<script src="view/plugins/jquery.min.js"></script>
-	<script src="view/plugins/jquery.scrollex.min.js"></script>
-	<script src="view/plugins/jquery.scrolly.min.js"></script>
-	<script src="view/js/skel.min.js"></script>
-	<script src="view/js/util.js"></script>
+	<script src="<?php echo PLUGIN_PATH ?>jquery.min.js"></script>
+	<script src="<?php echo PLUGIN_PATH ?>jquery.scrollex.min.js"></script>
+	<script src="<?php echo PLUGIN_PATH ?>jquery.scrolly.min.js"></script>
+	<script src="<?php echo JS_PATH ?>skel.min.js"></script>
+	<script src="<?php echo JS_PATH ?>util.js"></script>
 	<!--[if lte IE 8]><script src="view/js/ie/respond.min.js"></script><![endif]-->
-	<script src="view/js/main.js"></script>
+	<script src="<?php echo JS_PATH ?>main.js"></script>
+
   <!-- Datepicker -->
    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
    <script src="//code.jquery.com/jquery-1.10.2.js"></script>

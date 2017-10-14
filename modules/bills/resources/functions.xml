@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>form_bills</name>
+        <uri>form_bills</uri>
+    </function>
+    <function>
+        <name>results_bills</name>
+        <uri>results_bills</uri>
+    </function>
+    <function>
+        <name>upload_bills</name>
+        <uri>upload_bills</uri>
+    </function>
+    <function>
+        <name>alta_bills</name>
+        <uri>alta_bills</uri>
+    </function>
+    <function>
+        <name>delete_bills</name>
+        <uri>delete_bills</uri>
+    </function>
+    <function>
+        <name>load_bills</name>
+        <uri>load_bills</uri>
+    </function>
+    <function>
+        <name>load_data_bills</name>
+        <uri>load_data_bills</uri>
+    </function>
+    <function>
+        <name>load_countries_bills</name>
+        <uri>load_countries_bills</uri>
+    </function>
+    <function>
+        <name>load_provinces_bills</name>
+        <uri>load_provinces_bills</uri>
+    </function>
+    <function>
+        <name>load_towns_bills</name>
+        <uri>load_towns_bills</uri>
+    </function>
+</functions>

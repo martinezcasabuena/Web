@@ -536,7 +536,7 @@ function validate_bill() {
         });
     }
 
-    function load_countries_v1() {
+  /*  function load_countries_v1() {
         $.get( "modules/bills/controller/controller_bills.class.php?load_country=true",
             function( response ) {
                 //console.log(response);
@@ -549,6 +549,24 @@ function validate_bill() {
         .fail(function(response) {
             load_countries_v2("resources/ListOfCountryNamesByName.json");
         });
+    }*/
+
+    function load_countries_v1() {
+        //"index.php?module=users&function=load_countries_users&load_country=true"
+        console.log("load v1");
+        $.post("../bills/load_countries_bills/",{'load_country':true},
+                function (response) {
+                    //console.log(response);
+                    if (response === 'error') {
+                        load_countries_v2("../resources/ListOfCountryNamesByName.json");
+                    } else {
+                        //"index.php?module=users&function=load_countries_users&load_country=true"
+                        load_countries_v2("../bills/load_countries_users/",{'load_country':true}); //oorsprong.org
+                    }
+                })
+                .fail(function (response) {
+                    load_countries_v2("../../resources/ListOfCountryNamesByName.json");
+                });
     }
 
     function load_provinces_v2() {

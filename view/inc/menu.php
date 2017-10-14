@@ -11,7 +11,7 @@
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="index.php?module=main">Home</a></li>
+						?>"><a href="<?php amigable('?module=main'); ?>">Home</a></li>
 
 						<li class="
 						<?php if($_GET['module'] === 'generic')
@@ -32,7 +32,7 @@
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="index.php?module=bills&view=create_bills">Create Bills</a></li>
+						?>"><a href="<?php amigable('?module=bills&function=form_bills'); ?>">Create Bills</a></li>
 
 						<li class="
 						<?php if($_GET['module'] === 'list_bills')

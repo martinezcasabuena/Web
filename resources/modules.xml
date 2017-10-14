@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules>
+    <module>
+        <name>main</name>
+        <uri>main</uri>
+    </module>
+    <module>
+        <name>bills</name>
+        <uri>bills</uri>
+    </module>
+    <module>
+        <name>list_bills</name>
+        <uri>list_bills</uri>
+    </module>
+</modules>
