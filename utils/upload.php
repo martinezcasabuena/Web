@@ -1,4 +1,4 @@
-<?php
+MEDIA_PATH<?php
 //utilizar $_FILES['file'] no $_FILES['avatar'] por dropzone.js
 function upload_files() {
     $error = "";
@@ -71,14 +71,14 @@ function upload_files() {
         */
 
     ////////////////////////////////////////////////////////////////////////////
-    $upfile = $_SERVER['DOCUMENT_ROOT'].'/web/media/'.$_FILES['avatar']['name'];
+    $upfile = MEDIA_PATH.$_FILES['avatar']['name'];
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
             $nombreFichero = $idUnico."-".$_FILES['file']['name'];
             $copiarFichero = true;
             // I use absolute route to move_uploaded_file because this happens when i run ajax
-            $upfile = $_SERVER['DOCUMENT_ROOT'].'/web/media/'.$nombreFichero;
+            $upfile = MEDIA_PATH.$nombreFichero;
         }else{
                 $error .=   "Invalid File...";
         }
@@ -106,8 +106,8 @@ function upload_files() {
 
 function remove_files(){
 	$name = $_POST["filename"];
-	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/web/media/'.$name)){
-		unlink($_SERVER['DOCUMENT_ROOT'].'/web/media/'.$name);
+	if(file_exists(MEDIA_PATH.$name)){
+		unlink(MEDIA_PATH.$name);
 		return true;
 	}else{
 		return false;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>list_bills</name>
+        <uri>list_bills</uri>
+    </function>
+    <function>
+        <name>details_bill</name>
+        <uri>details_bill</uri>
+    </function>
+    <function>
+        <name>load_billsList</name>
+        <uri>load_billsList</uri>
+    </function>
+    <function>
+        <name>load_bill</name>
+        <uri>load_bill</uri>
+    </function>
+    <function>
+        <name>load_billDetails</name>
+        <uri>load_billDetails</uri>
+    </function>
+</functions>

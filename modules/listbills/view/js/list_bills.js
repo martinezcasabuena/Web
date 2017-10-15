@@ -1,9 +1,11 @@
 function load_bills() {
-    var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?allbills=true", function (data) {
-        var json = JSON.parse(data);
-        console.log(json);
-        pintar_bill(json);
-        //alert( "success" );
+    //var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?allbills=true", function (data) {
+    var jqxhr = $.post("../../listbills/load_billsList/", {'allbills': true}, function (data) {
+      console.log(data);
+      var json = JSON.parse(data);
+      console.log(json);
+      pintar_bill(json);
+      //alert( "success" );
     }).done(function () {
         //alert( "second success" );
     }).fail(function () {
@@ -70,7 +72,8 @@ function pintar_bill(data) {
 
       var cad = data.bill[i].avatar;
       var img = document.createElement("div");
-      var html = '<img src="' + cad + '" height="100" width="100"> ';
+      var html = '<img src="../../' + cad + '" height="100" width="100"> ';
+
       img.innerHTML = html;
 
       div.appendChild(label);
@@ -81,9 +84,12 @@ function pintar_bill(data) {
     }
 
    function verDetalles(){
-     var idBill=this.id;
-     $.get("modules/listbills/controller/controller_listbills.class.php?details_bill=" + idBill, function (data) {
-       window.location.replace("index.php?module=listbills&view=details_bill");
+     $idBill=this.id;
+     console.log($idBill);
+    // $.get("modules/listbills/controller/controller_listbills.class.php?details_bill=" + idBill, function (data) {
+     $.post("../../listbills/load_billDetails/", {'load_billDetails':$idBill}, function (data) {
+       console.log(data);
+       window.location.replace("../../listbills/details_bill/");
          //alert( "success" );
      })
    }

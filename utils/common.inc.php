@@ -11,7 +11,7 @@ function loadModel($model_path, $model_name, $function, $arrArgument = '') {
 
         $obj = $modelClass::getInstance();
         if (isset($arrArgument)) {
-            return call_bill_func(array($obj, $function),$arrArgument);//cambiar a array como en router
+            return call_user_func(array($obj, $function),$arrArgument);//cambiar a array como en router
         }
     } else {
         throw new Exception();

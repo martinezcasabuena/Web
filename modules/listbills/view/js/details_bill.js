@@ -1,7 +1,8 @@
 function load_details() {
-//  $idBill=$_SESSION["idBill"];
+  //$idBill=$_SESSION["idBill"];
 
-    var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?loadBill", function (data) {
+    //var jqxhr = $.get("modules/listbills/controller/controller_listbills.class.php?loadBill", function (data) {
+    var jqxhr = $.post("../../listbills/load_bill/", {'loadBill': true}, function (data) {
         //alert( "success" );
         var json = JSON.parse(data);
         console.log(json);
@@ -30,25 +31,6 @@ function pintar_details(data){
   var content = document.getElementById("content");
   var div_bill = document.createElement("div");
   var parrafo = document.createElement("p");
-
-
-  //createLine("name","nameLabel","nameValue","Nombre");
-
-
-  /*function createLine(nameDiv,nameLabel,nameValue,labelText){
-    nameDiv = document.createElement("div");
-    nameLabel = document.createElement("label");
-    nameValue = document.createElement("input");
-    nameLabel.innerHTML = labelText;
-    nameValue.type = "text";
-    nameValue.value = data.bill[0].name;
-    nameValue.readOnly = "true";
-
-    nameDiv.appendChild(nameLabel);
-    nameDiv.appendChild(nameValue);
-    parrafo.appendChild(nameDiv);
-
-  }*/
 
   var nameDiv = document.createElement("div");
   var nameLabel = document.createElement("label");
@@ -177,7 +159,7 @@ function pintar_details(data){
 
   var cad = data.bill[0].avatar;
   var img = document.createElement("div");
-  var html = '<img src="' + cad + '" height="75" width="75"> ';
+  var html = '<img src="../../' + cad + '" height="150" width="150"> ';
   img.innerHTML = html;
 
   div_bill.appendChild(parrafo);

@@ -87,8 +87,8 @@ function handlerFunction($module, $obj, $URI_function) {
         showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
         require_once(VIEW_PATH_INC . "footer.html");
     } else {
-        $obj->$event();
-        //call_bill_func(array($obj, $event));
+        // $obj->$event();
+        call_user_func(array($obj, $event));
     }
 }
 

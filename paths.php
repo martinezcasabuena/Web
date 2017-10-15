@@ -46,14 +46,13 @@ define('BLL_BILLS', SITE_ROOT . 'modules/bills/model/BLL/');
 define('MODEL_BILLS', SITE_ROOT . 'modules/bills/model/model/');
 define('BILLS_JS_PATH', SITE_PATH . 'modules/bills/view/js/');
 
-//model products
-define('UTILS_PRODUCTS', SITE_ROOT . 'modules/products/utils/');
-define('PRODUCTS_JS_LIB_PATH', SITE_PATH . 'modules/products/view/lib/');
-define('PRODUCTS_JS_PATH', SITE_PATH . 'modules/products/view/js/');
-define('MODEL_PATH_PRODUCTS', SITE_ROOT . 'modules/products/model/');
-define('DAO_PRODUCTS', SITE_ROOT . 'modules/products/model/DAO/');
-define('BLL_PRODUCTS', SITE_ROOT . 'modules/products/model/BLL/');
-define('MODEL_PRODUCTS', SITE_ROOT . 'modules/products/model/model/');
+//model listbills
+define('UTILS_LISTBILLS', SITE_ROOT . 'modules/listbills/utils/');
+define('LISTBILLS_JS_PATH', SITE_PATH . 'modules/listbills/view/js/');
+define('MODEL_PATH_listbills', SITE_ROOT . 'modules/listbills/model/');
+define('DAO_LISTBILLS', SITE_ROOT . 'modules/listbills/model/DAO/');
+define('BLL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/BLL/');
+define('MODEL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/model/');
 
 //amigables
 define('URL_AMIGABLES', TRUE);
