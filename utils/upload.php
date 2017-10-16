@@ -1,4 +1,4 @@
-MEDIA_PATH<?php
+META<?php
 //utilizar $_FILES['file'] no $_FILES['avatar'] por dropzone.js
 function upload_files() {
     $error = "";

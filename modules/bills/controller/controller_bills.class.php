@@ -193,44 +193,53 @@ class controller_bills {
         }
     }
 
+
     function load_provinces_bills() {
-    if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
-        	$jsondata = array();
+        if ((isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)) {
+            $jsondata = array();
             $json = array();
 
-    		$path_model=$_SERVER['DOCUMENT_ROOT'] . '/web/modules/bills/model/model/';
-    		$json = loadModel($path_model, "bill_model", "obtain_provinces");
+            try {
+                $json = loadModel(MODEL_BILLS, "bill_model", "obtain_provinces");
+            } catch (Exception $e) {
+                $json = array();
+            }
 
-    		if($json){
-    			$jsondata["provinces"] = $json;
-    			echo json_encode($jsondata);
-    			exit;
-    		}else{
-    			$jsondata["provinces"] = "error";
-    			echo json_encode($jsondata);
-    			exit;
-    		}
-    	}
+            if ($json) {
+                $jsondata["provinces"] = $json;
+                echo json_encode($jsondata);
+                exit;
+            } else {
+                $jsondata["provinces"] = "error";
+                echo json_encode($jsondata);
+                exit;
+            }
+        }
     }
 
   /////////////////////////////////////////////////// load_cities
-  function load_towns_bills() {
-    if(  isset($_POST['idPoblac']) ){
-    	    $jsondata = array();
+    function load_towns_bills() {
+        if (isset($_POST['idPoblac'])) {
+            $jsondata = array();
             $json = array();
 
-    		$path_model=$_SERVER['DOCUMENT_ROOT'] . '/web/modules/bills/model/model/';
-    		$json = loadModel($path_model, "bill_model", "obtain_cities", $_POST['idPoblac']);
+            try {
+                $json = loadModel(MODEL_BILLS, "bill_model", "obtain_cities", $_POST['idPoblac']);
+            } catch (Exception $e) {
+                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+            }
 
-    		if($json){
-    			$jsondata["cities"] = $json;
-    			echo json_encode($jsondata);
-    			exit;
-    		}else{
-    			$jsondata["cities"] = "error";
-    			echo json_encode($jsondata);
-    			exit;
-    		}
-    	}
+            if ($json) {
+                $jsondata["cities"] = $json;
+                echo json_encode($jsondata);
+                exit;
+            } else {
+                $jsondata["cities"] = "error";
+                echo json_encode($jsondata);
+                exit;
+            }
+        }
     }
+
+
   }
