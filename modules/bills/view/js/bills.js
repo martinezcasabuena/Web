@@ -453,7 +453,7 @@ function validate_bill() {
 
         var data_bills_JSON = JSON.stringify(data);
 
-        $.post('modules/bills/controller/controller_bills.class.php',
+        $.post("../../bills/alta_bills_json/",
                 {alta_bills_json: data_bills_JSON},
         function (response) {
             if (response.success) {
@@ -565,8 +565,7 @@ function validate_bill() {
     }*/
 
     function load_countries_v1() {
-        console.log("load v1");
-        $.post("../../bills/load_countries_bills/",{'load_country':true},
+        $.get("../../bills/load_countries_bills/",
                 function (response) {
                     //console.log(response);
                     if (response === 'error') {

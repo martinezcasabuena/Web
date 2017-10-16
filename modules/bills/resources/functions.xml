@@ -13,8 +13,8 @@
         <uri>upload_bills</uri>
     </function>
     <function>
-        <name>alta_bills</name>
-        <uri>alta_bills</uri>
+        <name>alta_bills_json</name>
+        <uri>alta_bills_json</uri>
     </function>
     <function>
         <name>delete_bills</name>

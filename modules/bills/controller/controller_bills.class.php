@@ -33,7 +33,7 @@ class controller_bills {
   }
 
   //////////////////////////////////////////////////////////////// alta_users_json
-  function alta_bills() {
+  function alta_bills_json() {
     if ((isset($_POST['alta_bills_json']))) {
       $jsondata = array();
       $billsJSON = json_decode($_POST["alta_bills_json"], true);
@@ -74,7 +74,7 @@ class controller_bills {
           $_SESSION['bill'] = $arrArgument;
           $_SESSION['msje'] = $mensaje;
 
-          $callback = "index.php?module=bills&view=results_bills";
+          $callback = "../../bills/results_bills/";
 
           $jsondata["success"] = true;
           $jsondata["redirect"] = $callback;
@@ -137,7 +137,7 @@ class controller_bills {
 
   /////////////////////////////////////////////////// load_data
   function load_data_bills() {
-    if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
+    if ((isset($_POST["load_data"])) && ($_POST["load_data"] == true)) {
         $jsondata = array();
         if (isset($_SESSION['bill'])) {
             $jsondata["bill"] = $_SESSION['bill'];
@@ -150,96 +150,75 @@ class controller_bills {
         }
     }
   }
-  /*function load_countries_bills() {
-    if(  (isset($_GET["load_country"])) && ($_GET["load_country"] == true)  ){
-    		$json = array();
 
-        	$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
-    		$path_model=$_SERVER['DOCUMENT_ROOT'] . '/web/modules/bills/model/model/';
-    		$json = loadModel($path_model, "bill_model", "obtain_countries", $url);
+  function load_countries_bills() {
+    $json = array();
+    $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
 
-    		if($json){
-    			echo $json;
-    			exit;
-    		}else{
-    			$json = "error";
-    			echo $json;
-    			exit;
-    		}
-    	}
-    }*/
-
-    function load_countries_bills() {
-        if ((isset($_POST["load_country"])) && ($_POST["load_country"] == true)) {
-            $json = array();
-            $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
-
-            try {
-                //throw new Exception();
-                console.log("Try");
-                $json = loadModel(MODEL_BILLS, "bill_model", "obtain_countries", $url);
-            } catch (Exception $e) {
-                $json = array();
-            }
-
-            if ($json) {
-                echo $json;
-                exit;
-            } else {
-                $json = "error";
-                echo $json;
-                exit;
-            }
-        }
+    try {
+        //throw new Exception();
+        //console.log("Try");
+        $json = loadModel(MODEL_BILLS, "bill_model", "obtain_countries", $url);
+    } catch (Exception $e) {
+        $json = array();
     }
 
+    if ($json) {
+        echo $json;
+        exit;
+    } else {
+        $json = "error";
+        echo $json;
+        exit;
+    }
+  }
 
-    function load_provinces_bills() {
-        if ((isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)) {
-            $jsondata = array();
+
+  function load_provinces_bills() {
+    if ((isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)) {
+        $jsondata = array();
+        $json = array();
+
+        try {
+            $json = loadModel(MODEL_BILLS, "bill_model", "obtain_provinces");
+        } catch (Exception $e) {
             $json = array();
+        }
 
-            try {
-                $json = loadModel(MODEL_BILLS, "bill_model", "obtain_provinces");
-            } catch (Exception $e) {
-                $json = array();
-            }
-
-            if ($json) {
-                $jsondata["provinces"] = $json;
-                echo json_encode($jsondata);
-                exit;
-            } else {
-                $jsondata["provinces"] = "error";
-                echo json_encode($jsondata);
-                exit;
-            }
+        if ($json) {
+            $jsondata["provinces"] = $json;
+            echo json_encode($jsondata);
+            exit;
+        } else {
+            $jsondata["provinces"] = "error";
+            echo json_encode($jsondata);
+            exit;
         }
     }
+  }
 
   /////////////////////////////////////////////////// load_cities
-    function load_towns_bills() {
-        if (isset($_POST['idPoblac'])) {
-            $jsondata = array();
-            $json = array();
+  function load_towns_bills() {
+      if (isset($_POST['idPoblac'])) {
+          $jsondata = array();
+          $json = array();
 
-            try {
-                $json = loadModel(MODEL_BILLS, "bill_model", "obtain_cities", $_POST['idPoblac']);
-            } catch (Exception $e) {
-                showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
-            }
+          try {
+              $json = loadModel(MODEL_BILLS, "bill_model", "obtain_cities", $_POST['idPoblac']);
+          } catch (Exception $e) {
+              showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+          }
 
-            if ($json) {
-                $jsondata["cities"] = $json;
-                echo json_encode($jsondata);
-                exit;
-            } else {
-                $jsondata["cities"] = "error";
-                echo json_encode($jsondata);
-                exit;
-            }
-        }
-    }
-
-
+          if ($json) {
+              $jsondata["cities"] = $json;
+              echo json_encode($jsondata);
+              exit;
+          } else {
+              $jsondata["cities"] = "error";
+              echo json_encode($jsondata);
+              exit;
+          }
+      }
   }
+  
+}

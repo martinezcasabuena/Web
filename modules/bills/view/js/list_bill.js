@@ -1,9 +1,10 @@
 function load_bills() {
-    var jqxhr = $.get("modules/bills/controller/controller_bills.class.php?load=true", function (data) {
-        var json = JSON.parse(data);
-        console.log(json);
-        pintar_bill(json);
-        //alert( "success" );
+    var jqxhr = $.post("../../bills/load_data_bills/", {'load_data': true}, function (data) {
+      //console.log(data);
+      var json = JSON.parse(data);
+      console.log(json);
+      pintar_bill(json);
+      //alert( "success" );
     }).done(function () {
         //alert( "second success" );
     }).fail(function () {
