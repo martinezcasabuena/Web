@@ -25,7 +25,7 @@ class controller_bills {
 
   //////////////////////////////////////////////////////////////// upload
   function upload_bills() {
-    if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
+    if ((isset($_POST["upload"])) && ($_POST["upload"] == true)) {
         $result_avatar = upload_files();
         $_SESSION['result_avatar'] = $result_avatar;
         //echo debug($_SESSION['result_avatar']); //se mostraría en alert(response); de dropzone.js
@@ -99,7 +99,7 @@ class controller_bills {
     }
   }
   function delete_bills() {
-    if (isset($_GET["delete"]) && $_GET["delete"] == true) {
+    if (isset($_POST["delete"]) && $_POST["delete"] == true) {
         $_SESSION['result_avatar'] = array();
         $result = remove_files();
         if ($result === true) {
@@ -112,7 +112,7 @@ class controller_bills {
 
   //////////////////////////////////////////////////////////////// load
   function load_bills() {
-    if (isset($_GET["load"]) && $_GET["load"] == true) {
+    if (isset($_POST["load"]) && $_POST["load"] == true) {
         $jsondata = array();
         if (isset($_SESSION['bill'])) {
             //echo debug($_SESSION['user']);
@@ -175,7 +175,7 @@ class controller_bills {
 
 
   function load_provinces_bills() {
-    if ((isset($_POST["load_provinces"])) && ($_POST["load_provinces"] == true)) {
+    if ((isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)) {
         $jsondata = array();
         $json = array();
 
@@ -199,7 +199,7 @@ class controller_bills {
 
   /////////////////////////////////////////////////// load_cities
   function load_towns_bills() {
-      if (isset($_POST['idPoblac'])) {
+      if (isset($_GET['idPoblac'])) {
           $jsondata = array();
           $json = array();
 
@@ -220,5 +220,5 @@ class controller_bills {
           }
       }
   }
-  
+
 }

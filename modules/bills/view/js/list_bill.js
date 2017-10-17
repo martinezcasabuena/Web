@@ -1,5 +1,5 @@
 function load_bills() {
-    var jqxhr = $.post("../../bills/load_data_bills/", {'load_data': true}, function (data) {
+    var jqxhr = $.post("../../bills/load_bills/", {'load': true}, function (data) {
       //console.log(data);
       var json = JSON.parse(data);
       console.log(json);
@@ -69,15 +69,11 @@ function pintar_bill(data) {
     service.innerHTML += " - "+data.bill.service[i];
     }
 
-    //arreglar ruta IMATGE!!!!!
-
     var cad = data.bill.avatar;
-    //console.log(cad);
-    //var cad = cad.toLowerCase();
     var img = document.createElement("div");
-    var html = '<img src="' + cad + '" height="75" width="75"> ';
+    var html = '<img src="../../' + cad + '" height="100" width="100"> ';
+
     img.innerHTML = html;
-    //alert(html);
 
     div_bill.appendChild(parrafo);
     parrafo.appendChild(msje);

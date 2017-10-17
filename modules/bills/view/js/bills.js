@@ -123,9 +123,10 @@ $(document).ready(function () {
   });
 
   //Control de seguridad para evitar que al volver atrás de la pantalla results a create, no nos imprima los datos
-  $.get("modules/bills/controller/controller_bills.class.php?load_data=true",
+  $.post("../../bills/load_data_bills", {'load_data': true},
           function (response) {
               //alert(response.bill);
+              console.log(response);
               if (response.bill === "") {
                   $("#name").val('');
                   $("#last_name").val('');
@@ -173,7 +174,8 @@ $(document).ready(function () {
 
   //Dropzone function //////////////////////////////////
   $("#dropzone").dropzone({
-      url: "modules/bills/controller/controller_bills.class.php?upload=true",
+      url: "../../bills/upload_bills/",
+      params:{'upload':true},
       addRemoveLinks: true,
       maxFileSize: 1000,
       dictResponseError: "Ha ocurrido un error en el server",
@@ -200,8 +202,9 @@ $(document).ready(function () {
           var name = file.name;
           $.ajax({
               type: "POST",
-              url: "modules/bills/controller/controller_bills.class.php?delete=true",
-              data: "filename=" + name,
+              url: "../../bills/delete_bills/",
+              //data: "filename=" + name,
+              data: {"filename":name,"delete":true},
               success: function (data) {
                   $("#progress").hide();
                   $('.msg').text('').removeClass('msg_ok');
@@ -507,7 +510,7 @@ function validate_bill() {
               $("#error_city").focus().after("<span  class='error1'>" + xhr.responseJSON.error.city + "</span>");
 
             if (xhr.responseJSON.success1) {
-                if (xhr.responseJSON.img_avatar !== "/web/media/default-avatar.png") {
+                if (xhr.responseJSON.img_avatar !== "./media/default-avatar.png") {
                     //$("#progress").show();
                     //$("#bar").width('100%');
                     //$("#percent").html('100%');
@@ -522,19 +525,6 @@ function validate_bill() {
         });
     }
 }
-  /*function load_countries_v2(cad) {
-      $.getJSON( cad, function(data) {
-        $("#country").empty();
-        $("#country").append('<option value="" selected="selected">Selecciona el pais</option>');
-
-        $.each(data, function (i, valor) {
-          $("#country").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
-        });
-      })
-      .fail(function() {
-          alert( "error load_countries" );
-      });
-  }*/
 
   function load_countries_v2(cad, post_data) {
       $.post(cad, post_data, function (data) {
@@ -548,21 +538,6 @@ function validate_bill() {
                   alert("error load_countries");
               });
   }
-
-  /*  function load_countries_v1() {
-        $.get( "modules/bills/controller/controller_bills.class.php?load_country=true",
-            function( response ) {
-                //console.log(response);
-                if(response === 'error'){
-                    load_countries_v2("resources/ListOfCountryNamesByName.json");
-                }else{
-                    load_countries_v2("modules/bills/controller/controller_bills.class.php?load_country=true"); //oorsprong.org
-                }
-        })
-        .fail(function(response) {
-            load_countries_v2("resources/ListOfCountryNamesByName.json");
-        });
-    }*/
 
     function load_countries_v1() {
         $.get("../../bills/load_countries_bills/",
@@ -594,7 +569,6 @@ function validate_bill() {
             alert( "error load_provinces" );
         });
     }
-
 
     function load_provinces_v1() { //provinciasypoblaciones.xml - xpath
       $.post('../../bills/load_provinces_bills/',{'load_provinces':true},
@@ -641,9 +615,6 @@ function validate_bill() {
     	    //alert(response);
             var json = JSON.parse(response);
     		    var cities=json.cities;
-    		//alert(poblaciones);
-    		//console.log(poblaciones);
-    		//alert(poblaciones[0].poblacion);
 
     		$("#city").empty();
     	    $("#city").append('<option value="" selected="selected">Selecciona la ciudad</option>');
