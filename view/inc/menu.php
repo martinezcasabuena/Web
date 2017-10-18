@@ -45,7 +45,7 @@
 										 echo'active';
 									else
 										 echo 'deactivate';
-						?>"><a href="<?php amigable('?module=contact&function=contact'); ?>">Contact</a></li>
+						?>"><a href="<?php amigable('?module=contact&function=view_contact'); ?>">Contact</a></li>
 					</ul>
 				</div>
 			</li>

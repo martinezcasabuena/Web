@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <functions>
     <function>
-        <name>contact</name>
-        <uri>contact</uri>
+        <name>view_contact</name>
+        <uri>view_contact</uri>
     </function>
     <function>
         <name>process_contact</name>

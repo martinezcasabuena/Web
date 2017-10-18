@@ -57,10 +57,12 @@ define('DAO_LISTBILLS', SITE_ROOT . 'modules/listbills/model/DAO/');
 define('BLL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/BLL/');
 define('MODEL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/model/');
 
-//model contact
+//module contact
 define('CONTACT_JS_PATH', SITE_PATH . 'modules/contact/view/js/');
+define('CONTACT_CSS_PATH', SITE_PATH . 'modules/contact/view/css/');
 define('CONTACT_LIB_PATH', SITE_PATH . 'modules/contact/view/lib/');
-
+define('CONTACT_IMG_PATH', SITE_PATH . 'modules/contact/view/img/');
+define('CONTACT_VIEW_PATH', 'modules/contact/view/');
 
 
 //amigables

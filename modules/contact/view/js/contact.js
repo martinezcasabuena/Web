@@ -50,9 +50,8 @@ $(document).ready(function(){
 	});
 
     $("#contact_form").submit(function(){
-      alert();
         if ($("#contact_form").valid()){
-          alert("valid");
+
             // Disable button while processing
             $('#submitBtn').attr('disabled', true);
 

@@ -1,33 +1,34 @@
+<br><br><br><br><br><br><br><br><br>
+
+<script src="<?php echo CONTACT_LIB_PATH; ?>bootstrap-button.js"></script>
 <script src="<?php echo CONTACT_LIB_PATH; ?>jquery.validate.min.js"></script>
 <script src="<?php echo CONTACT_LIB_PATH; ?>jquery.validate.extended.js"></script>
+<script src="<?php echo CONTACT_JS_PATH; ?>contact.js"></script>
 
-<script type="text/javascript" src="<?php echo CONTACT_JS_PATH ?>contact.js" ></script>
-<section id="bills-page">
-    <div class="container">
-        <div class="center">
-            <h2 align="center">Contact</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 
-            <form id="contact_form" name="contact_form" class="form-contact">
-              <div class="row">
-            		<label for="name">Tu nombre:</label><br />
-            		<input id="name" class="input" name="name" type="text" value="" size="30" /><br />
-            	</div>
-            	<div class="row">
-            		<label for="email">Tu email:</label><br />
-            		<input id="email" class="input" name="email" type="text" value="" size="30" /><br />
-            	</div>
-            	<div class="row">
-            		<label for="message">Tu mensaje:</label><br />
-            		<textarea id="message" class="input" name="message" rows="7" cols="30"></textarea><br />
-            	</div>
-              <br>
-              <input type="hidden" name="token" value="contact_form" />
+<div class="container">
+    <form id="contact_form" name="contact_form" class="form-contact">
+        <h2 class="form-contact-heading">Contact Us</h2>
 
-              <input class="btn btn-primary" type="submit" name="submit" id="submitBtn" disabled="disabled" value="send" />
-              <div id="resultMessage" style="display: none;"></div>
-
-  </form>
-
+        <div class="control-group">
+            <input type="text" id="inputName" name="inputName" placeholder="Name" dir="auto" maxlength="100">
         </div>
-    </div><!--/.container-->
-</section><!--/#contact-page-->
+        <br>
+        <div class="control-group">
+            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email *" maxlength="100">
+        </div>
+        <br>
+        <div class="control-group">
+              <textarea class="input-block-level" rows="4" name="inputMessage" placeholder="Message *" style="max-width: 100%;" dir="auto"></textarea>
+        </div>
+
+        <input type="hidden" name="token" value="contact_form" />
+
+        <input class="btn btn-primary" type="submit" name="submit" id="submitBtn" disabled="disabled" value="send" />
+
+        <img src="<?php echo CONTACT_IMG_PATH; ?>ajax-loader.gif" alt="ajax loader icon" class="ajaxLoader" /><br/><br/>
+
+        <div id="resultMessage" style="display: none;"></div>
+    </form>
+</div> <!-- /container -->
