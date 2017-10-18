@@ -6,7 +6,7 @@ class listbills_bll {
 
     private function __construct() {
         $this->dao = listbills_dao::getInstance();
-        $this->db = Db::getInstance();
+        $this->db = db::getInstance();
     }
 
     public static function getInstance() {

@@ -37,6 +37,9 @@ define('RESOURCES', SITE_ROOT . 'resources/');
 define('MEDIA_PATH', SITE_ROOT . 'media/');
 //utils
 define('UTILS', SITE_ROOT . 'utils/');
+//clases
+define('CLASSES',SITE_ROOT.'classes/');
+
 
 //model bills
 define('FUNCTIONS_BILLS', SITE_ROOT . 'modules/bills/utils/');
@@ -53,6 +56,12 @@ define('MODEL_PATH_listbills', SITE_ROOT . 'modules/listbills/model/');
 define('DAO_LISTBILLS', SITE_ROOT . 'modules/listbills/model/DAO/');
 define('BLL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/BLL/');
 define('MODEL_LISTBILLS', SITE_ROOT . 'modules/listbills/model/model/');
+
+//model contact
+define('CONTACT_JS_PATH', SITE_PATH . 'modules/contact/view/js/');
+define('CONTACT_LIB_PATH', SITE_PATH . 'modules/contact/view/lib/');
+
+
 
 //amigables
 define('URL_AMIGABLES', TRUE);
