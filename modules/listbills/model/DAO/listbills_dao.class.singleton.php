@@ -1,6 +1,5 @@
 <?php
-
-class listbillsDAO {
+class listbills_dao {
     static $_instance;
 
     private function __construct() {

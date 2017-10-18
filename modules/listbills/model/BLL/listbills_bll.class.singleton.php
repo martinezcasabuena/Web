@@ -1,19 +1,11 @@
 <?php
-
-$path = $_SERVER['DOCUMENT_ROOT'] . '/web/';
-if (!defined('SITE_ROOT')) define('constant', $path);
-define('MODEL_PATH', SITE_ROOT . 'model/');
-
-require (MODEL_PATH . "Db.class.singleton.php");
-require(SITE_ROOT . "modules/listbills/model/DAO/listbills_dao.class.singleton.php");
-
 class listbills_bll {
     private $dao;
     private $db;
     static $_instance;
 
     private function __construct() {
-        $this->dao = listbillsDAO::getInstance();
+        $this->dao = listbills_dao::getInstance();
         $this->db = Db::getInstance();
     }
 

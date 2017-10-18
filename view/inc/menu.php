@@ -40,6 +40,12 @@
 									else
 										 echo 'deactivate';
 						?>"><a href="<?php amigable('?module=listbills&function=list_bills'); ?>">List Bills</a></li>
+						<li class="
+						<?php if($_GET['module'] === 'contact')
+										 echo'active';
+									else
+										 echo 'deactivate';
+						?>"><a href="<?php amigable('?module=contact&function=contact'); ?>">Contact</a></li>
 					</ul>
 				</div>
 			</li>

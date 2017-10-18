@@ -63,8 +63,7 @@ class controller_bills {
 
           /////////////////insert into BD////////////////////////
           $arrValue = false;
-          $path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/bills/model/model/';
-          $arrValue = loadModel($path_model, "bill_model", "create_bill", $arrArgument);
+          $arrValue = loadModel(MODEL_BILLS, "bills_model", "create_bill", $arrArgument);
           //echo json_encode($arrValue);
           //die();
 
@@ -158,7 +157,8 @@ class controller_bills {
     try {
         //throw new Exception();
         //console.log("Try");
-        $json = loadModel(MODEL_BILLS, "bill_model", "obtain_countries", $url);
+        $json = loadModel(MODEL_BILLS, "bills_model", "obtain_countries", $url);
+        //echo $json;
     } catch (Exception $e) {
         $json = array();
     }
@@ -180,7 +180,7 @@ class controller_bills {
         $json = array();
 
         try {
-            $json = loadModel(MODEL_BILLS, "bill_model", "obtain_provinces");
+            $json = loadModel(MODEL_BILLS, "bills_model", "obtain_provinces");
         } catch (Exception $e) {
             $json = array();
         }
@@ -204,7 +204,7 @@ class controller_bills {
           $json = array();
 
           try {
-              $json = loadModel(MODEL_BILLS, "bill_model", "obtain_cities", $_POST['idPoblac']);
+              $json = loadModel(MODEL_BILLS, "bills_model", "obtain_cities", $_POST['idPoblac']);
           } catch (Exception $e) {
               showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
           }

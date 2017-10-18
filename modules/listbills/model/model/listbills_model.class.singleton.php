@@ -1,9 +1,4 @@
 <?php
-
-$path = $_SERVER['DOCUMENT_ROOT'] . '/web/';
-define('SITE_ROOT', $path);
-require(SITE_ROOT . "modules/listbills/model/BLL/listbills_bll.class.singleton.php");
-
 class listbills_model {
     private $bll;
     static $_instance;

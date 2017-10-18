@@ -1,6 +1,5 @@
 <?php
-
-class billDAO {
+class bills_dao {
     static $_instance;
 
     private function __construct() {
@@ -74,7 +73,7 @@ class billDAO {
           $json = array();
           $tmp = array();
 
-          $provincias = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].'/web/resources/provinciasypoblaciones.xml');
+          $provincias = simplexml_load_file(RESOURCES . "provinciasypoblaciones.xml");
           $result = $provincias->xpath("/lista/provincia/nombre | /lista/provincia/@id");
           for ($i=0; $i<count($result); $i+=2) {
             $e=$i+1;
@@ -94,7 +93,7 @@ class billDAO {
           $tmp = array();
 
           $filter = (string)$arrArgument;
-          $xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].'/web/resources/provinciasypoblaciones.xml');
+          $xml = simplexml_load_file(RESOURCES . 'provinciasypoblaciones.xml');
           $result = $xml->xpath("/lista/provincia[@id='$filter']/localidades");
 
           for ($i=0; $i<count($result[0]); $i++) {

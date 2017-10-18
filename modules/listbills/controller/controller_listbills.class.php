@@ -1,7 +1,6 @@
 <?php
 class controller_listbills {
   function __construct() {
-      //include(UTILS_LISTBILLS . "utils.inc.php");
       $_SESSION['module'] = "listbills";
   }
 
@@ -20,11 +19,8 @@ class controller_listbills {
   }
 
   function load_billsList(){
-    //if ((isset($_GET["allbills"])) && ($_GET["allbills"] == true)) {
       if ((isset($_POST["allbills"])) && ($_POST["allbills"] === "true")) {
-        //$path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/listbills/model/model/';
         $arrValue = loadModel(MODEL_LISTBILLS, "listbills_model", "list_bills");
-        //$arrValue = loadModel($path_model, "listbills_model", "list_bills");
         $jsondata["bill"] = $arrValue;
         echo json_encode($jsondata);
         exit;
@@ -35,7 +31,6 @@ class controller_listbills {
   function load_billDetails (){
     if ((isset($_POST["load_billDetails"]))) {
       $idBill=($_POST["load_billDetails"]);
-      //$path_model = $_SERVER['DOCUMENT_ROOT'] . '/web/modules/listbills/model/model/';
       $arrValue = loadModel(MODEL_LISTBILLS, "listbills_model", "details_bill",$idBill);
       $jsondata["bill"] = $arrValue;
       $_SESSION["loadedBill"]=$jsondata;

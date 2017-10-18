@@ -1,15 +1,10 @@
 <?php
-
-$path = $_SERVER['DOCUMENT_ROOT'] . '/web/';
-define('SITE_ROOT', $path);
-require(SITE_ROOT . "modules/bills/model/BLL/bill_bll.class.singleton.php");
-
-class bill_model {
+class bills_model {
     private $bll;
     static $_instance;
 
     private function __construct() {
-        $this->bll = bill_bll::getInstance();
+        $this->bll = bills_bll::getInstance();
     }
 
     public static function getInstance() {
@@ -30,7 +25,7 @@ class bill_model {
         return $this->bll->obtain_provinces_BLL();
     }
 
-    public Function obtain_cities($arrArgument){
+    public function obtain_cities($arrArgument){
         return $this->bll->obtain_cities_BLL($arrArgument);
     }
 }
