@@ -14,63 +14,70 @@ function paint(dataString) {
     // Enable button after processing
     $('#submitBtn').attr('disabled', false);
 
-    /*if (dataString == "<div class='alert alert-success'>Your message has been sent </div>"){
-        alert(dataString);
-    }else{
-        alert(dataString);
-    }*/
 }
 
 $(document).ready(function(){
     // disable submit button in case of disabled javascript browsers
     $(function(){
         $('#submitBtn').attr('disabled', false);
+        $('.ajaxLoader').fadeOut("slow");
+
     });
 
-	$("#contact_form").validate({
-				rules:{
-					inputName:{
-                        required: true
-					},
-					inputEmail:{
-                        required: true,
-                        email: true
-					},
-                    inputMessage:{
-                        required: true
-                    }
-				},
-        highlight: function(element) {
-            $(element).closest('.control-group').removeClass('success').addClass('error');},
-        success: function(element) {
-            $(element).closest('.control-group').removeClass('error').addClass('success');
-            $(element).closest('.control-group').find('label').remove();
-        },
-        errorClass: "help-inline"
-	});
-
-    $("#contact_form").submit(function(){
-        if ($("#contact_form").valid()){
-
-            // Disable button while processing
-            $('#submitBtn').attr('disabled', true);
-
-            // show ajax loader icon
-            $('.ajaxLoader').fadeIn("fast");
-
-            var dataString = $("#contact_form").serialize();
-            $.ajax({
-                type: "POST",
-                url: "../../contact/process_contact/",
-                data: dataString,
-                success: function(dataString) {
-                    paint(dataString);
-                }
-            })
-            .fail(function() {
-                paint("<div class='alert alert-error'>Server error. Try later...</div>");
-            });
-        }
-        return false;
+    $('#submitBtn').click(function () {
+        validate_email();
     });
+
+    function validate_email(){
+
+      var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+      var string_reg = /^[A-Za-z]{2,30}$/;
+
+      var result = true;
+      var inputName = document.getElementById('inputName').value;
+      var inputEmail = document.getElementById('inputEmail').value;
+      var inputMessage = document.getElementById('inputMessage').value;
+
+
+      if ($("#inputName").val() == "" || $("#inputName").val() == "Introduce name") {
+          $("#inputName").focus().after("<span class='error'>Introduce name</span>");
+          result = false;
+          return false;
+      } else if (!string_reg.test($("#inputName").val())) {
+          $("#inputName").focus().after("<span class='error'>Name must be 2 to 30 letters</span>");
+          result = false;
+          return false;
+      }
+
+      if ($("#inputEmail").val() == "" || $("#inputEmail").val() == "Introduce email") {
+          $("#inputEmail").focus().after("<span class='error'>Introduce email</span>");
+          result = false;
+          return false;
+      } else if (!email_reg.test($("#inputEmail").val())) {
+          $("#inputEmail").focus().after("<span class='error'>Error format email (example@example.com).</span>");
+          result = false;
+          return false;
+      }
+
+      if ($("#inputMessage").val() == "" || $("#inputMessage").val() == "Introduce name") {
+        $("#inputMessage").focus().after("<span class='error'>Introduce a message</span>");
+          result = false;
+          return false;
+      }
+
+      if(result!==false){
+        // Disable button while processing
+        $('#submitBtn').attr('disabled', true);
+        // show ajax loader icon
+        $('.ajaxLoader').fadeIn("fast");
+
+        var dataString = {"name":inputName,"email":inputEmail, "message": inputMessage};
+        var dataEmailJSON = JSON.stringify(dataString);
+        var jqxhr = $.post("../../contact/process_contact/",{dataEmail: dataEmailJSON,'sendEmail': true}, function (data) {
+        }).done(function () {
+            alert( "second success" );
+            paint(dataEmailJSON);
+        });
+      }
+    }
 });

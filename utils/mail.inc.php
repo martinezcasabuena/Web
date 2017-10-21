@@ -1,16 +1,16 @@
 <?php
 
-function send_mailgun($email){
+function send_mailgun($name,$email,$messageContent){
   $config = array();
-  $config['api_key'] = "key-3bc6b4714d9260983fd0e2e703986604"; //API Key
-  $config['api_url'] = "https://api.mailgun.net/v2/sandboxdda39b391a0540dfabb88efb6c33d2d6.mailgun.org/messages"; //API Base URL
+  $config['api_key'] = ""; //API Key
+  $config['api_url'] = ""; //API Base URL
 
   $message = array();
   $message['from'] = "martinezcasabuena@gmail.com";
   $message['to'] = $email;
   $message['h:Reply-To'] = "martinezcasabuena@gmail.com";
   $message['subject'] = "Hello, this is a test";
-  $message['html'] = 'Hello ' . $email . ',</br></br> This is a test';
+  $message['html'] = 'Hello ' . $name . ',</br></br> This is a test:</br></br>'.$messageContent;
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $config['api_url']);
